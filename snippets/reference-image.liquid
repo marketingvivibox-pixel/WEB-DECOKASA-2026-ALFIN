@@ -1,2 +1,25 @@
-{% comment %}Temporary art from the supplied mockup. CSS clips the original, unmodified asset; replace through image pickers when production art is available.{% endcomment %}
-<div class="mockup-crop crop-{{ crop }}" aria-hidden="true"><img src="{{ 'decokasa-reference.jpg' | asset_url }}" alt="" width="1600" height="900" loading="{{ loading | default: 'lazy' }}"></div>
+{% comment %}Independent high-resolution WebP artwork generated from the approved mockup. Image pickers can override these defaults.{% endcomment %}
+{% liquid
+  assign artwork = 'decokasa-' | append: crop | append: '.webp'
+  case crop
+    when 'hero'
+      assign art_width = 1906
+      assign art_height = 825
+    when 'xion'
+      assign art_width = 1860
+      assign art_height = 846
+    when 'baby'
+      assign art_width = 1860
+      assign art_height = 846
+    when 'biflex'
+      assign art_width = 1859
+      assign art_height = 846
+    when 'logo'
+      assign art_width = 2079
+      assign art_height = 756
+    when 'promo'
+      assign art_width = 2172
+      assign art_height = 724
+  endcase
+%}
+<div class="mockup-crop crop-{{ crop }}" aria-hidden="true"><img src="{{ artwork | asset_url }}" alt="" width="{{ art_width }}" height="{{ art_height }}" loading="{{ loading | default: 'lazy' }}"></div>

@@ -1,0 +1,50 @@
+[
+  {
+    "asset": "decokasa-hero.webp",
+    "width": 1906,
+    "height": 825,
+    "bytes": 271354,
+    "tool": "image_gen",
+    "encoding": "WebP quality 94"
+  },
+  {
+    "asset": "decokasa-xion.webp",
+    "width": 1860,
+    "height": 846,
+    "bytes": 168388,
+    "tool": "image_gen",
+    "encoding": "WebP quality 94"
+  },
+  {
+    "asset": "decokasa-baby.webp",
+    "width": 1860,
+    "height": 846,
+    "bytes": 213664,
+    "tool": "image_gen",
+    "encoding": "WebP quality 94"
+  },
+  {
+    "asset": "decokasa-biflex.webp",
+    "width": 1859,
+    "height": 846,
+    "bytes": 311526,
+    "tool": "image_gen",
+    "encoding": "WebP quality 94"
+  },
+  {
+    "asset": "decokasa-logo.webp",
+    "width": 2079,
+    "height": 756,
+    "bytes": 543016,
+    "tool": "image_gen",
+    "encoding": "WebP lossless"
+  },
+  {
+    "asset": "decokasa-promo.webp",
+    "width": 2172,
+    "height": 724,
+    "bytes": 189298,
+    "tool": "image_gen",
+    "encoding": "WebP quality 94"
+  }
+]

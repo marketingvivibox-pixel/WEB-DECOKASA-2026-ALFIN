@@ -29,7 +29,9 @@ async function main() {
     fs.writeFileSync(path.join(preview, file), html);
   }
   fs.mkdirSync(path.join(preview, 'assets'), { recursive: true });
-  fs.copyFileSync(path.join(root, 'assets/decokasa-reference.jpg'), path.join(preview, 'assets/decokasa-reference.jpg'));
+  for (const asset of fs.readdirSync(path.join(root, 'assets')).filter(name => /^decokasa-.*\.webp$/.test(name))) {
+    fs.copyFileSync(path.join(root, 'assets', asset), path.join(preview, 'assets', asset));
+  }
   console.log('Seven preview pages synchronized with the Shopify header and homepage.');
 }
 main().catch(error => { console.error(error); process.exitCode = 1; });

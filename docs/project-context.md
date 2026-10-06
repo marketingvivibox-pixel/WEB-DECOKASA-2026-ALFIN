@@ -13,7 +13,7 @@ Actualizado: 06/10/2026. Este documento prevalece sobre las propuestas históric
 - Enviar el formulario no reserva ni descuenta inventario. El asesor confirma y cierra la venta en Odoo; deben comprobarse las acciones operativas de reserva y entrega en pruebas.
 - Se puede construir mientras se aprueba el entorno Odoo de pruebas. URL y accesos todavía pendientes.
 - El usuario autorizó registrar todo el trabajo del proyecto en este repositorio el 06/10/2026 y conectó GitHub/main a Shopify. En la revisión visual posterior se verificó DECOKASA como tema activo y tienda privada con contraseña. Los cambios de main se sincronizan con ese tema.
-- Diseño de portada ajustado al mockup original aportado por el usuario: cabecera, buscador, categorías, banner y cuatro tarjetas. La referencia original se usa provisionalmente mediante recortes CSS; logo, banner y tarjetas admiten imágenes propias desde el editor. Los textos evitan prometer pagos o promociones todavía no configurados.
+- Diseño de portada ajustado al mockup original aportado por el usuario: cabecera, buscador, categorías, banner y tres tarjetas: Xion, Mundo Baby y Biflex. Se retiró la tarjeta mayorista superior; se conserva el bloque inferior #mayorista y su enlace de navegación. Seis artes independientes regenerados con image_gen y codificados en WebP sustituyen los recortes CSS del mockup; logo, banner y tarjetas admiten imágenes propias desde el editor. Los textos evitan prometer pagos o promociones todavía no configurados.
 
 ## Funcionalidades y uso
 
@@ -34,10 +34,10 @@ Objetivo: anuncio → solicitud → cliente → oportunidad → pedido → venta
 
 ## Estado real de la base 0.1.0
 
-El formulario solo simula una referencia, sin transmitir ni persistir contactos; no crea clientes, leads ni pedidos. La referencia se reutiliza para reintentos idénticos dentro de la misma página; persistencia duradera pendiente. La atribución de prueba usa `sessionStorage` solo con consentimiento. No hay conexiones Odoo, GA4 ni redes publicitarias. El catálogo, los precios y rendimientos de la demostración son ficticios. La portada usa el mockup original; las ilustraciones de productos demo no son fotografías de catálogo verificadas.
+El formulario solo simula una referencia, sin transmitir ni persistir contactos; no crea clientes, leads ni pedidos. La referencia se reutiliza para reintentos idénticos dentro de la misma página; persistencia duradera pendiente. La atribución de prueba usa `sessionStorage` solo con consentimiento. No hay conexiones Odoo, GA4 ni redes publicitarias. El catálogo, los precios y rendimientos de la demostración son ficticios. La portada usa artes regenerados a partir del mockup original; las ilustraciones de productos demo no son fotografías de catálogo verificadas.
 
 ## Pendientes
 
-Catálogo y fotos reales; artes separados de portada; configuración PEN y rutas; autoridad de precios y promociones; URL/permisos Odoo; SKU, variantes, unidades, almacenes y operación de cierre; receptor seguro de solicitudes, CRM, consentimiento y medición; pruebas de duplicados, fallos y conciliación antes del lanzamiento comercial. Portada revisada visualmente en Shopify en escritorio y celular el 06/10/2026.
+Catálogo y fotos reales; configuración PEN y rutas; autoridad de precios y promociones; URL/permisos Odoo; SKU, variantes, unidades, almacenes y operación de cierre; receptor seguro de solicitudes, CRM, consentimiento y medición; pruebas de duplicados, fallos y conciliación antes del lanzamiento comercial. Portada revisada visualmente en Shopify en escritorio y celular el 06/10/2026.
 
 Los backends existentes de Meta/TikTok son de solo lectura. Consultas sobre sus bases publicitarias parten de la carpeta de Drive `18fQUpb1ZMC7jKO-nenhJFXmbQo1Oyr1W`; no iniciar sesión en redes para buscar esos datos ni modificar sus scripts.
