@@ -24,7 +24,7 @@ El formulario solo simula y no persiste datos personales. Consentimiento de segu
 
 ## Diseño según el mockup original
 
-Cabecera con buscador, menú de categorías, banner negro/amarillo, tres marcas y franja promocional adaptados a la imagen del 02/10/2026. Seis artes independientes regenerados con image_gen sustituyen los recortes del mockup y se entregan en WebP de alta resolución (1860–2172 px de ancho). Textos y botones siguen siendo HTML. Solo se mantiene el bloque mayorista inferior. La cabecera admite logo propio; la sección Inicio admite banner y tres tarjetas. Se adaptó el texto comercial al flujo con asesor y sin pagos en línea. Prompts en `docs/image-prompts.json`; dimensiones, peso y codificación en `docs/image-assets.json`.
+Cabecera con buscador, menú de categorías, banner negro/amarillo, cuatro marcas (DECOKASA, Xion, Biflex y Mundo Baby) y franja promocional adaptados a la imagen del 02/10/2026. Seis artes independientes regenerados con image_gen sustituyen los recortes del mockup y se entregan en WebP de alta resolución (1860–2172 px de ancho). Textos y botones siguen siendo HTML. DECOKASA reutiliza el logo WebP aprobado sobre fondo amarillo suave. Las tarjetas se distribuyen en cuatro columnas en escritorio, dos en tabletas y una en celular. Solo se mantiene el bloque mayorista inferior. La cabecera admite logo propio; la sección Inicio admite banner y cuatro tarjetas. Se adaptó el texto comercial al flujo con asesor y sin pagos en línea. Prompts en `docs/image-prompts.json`; dimensiones, peso y codificación en `docs/image-assets.json`.
 
 Fuentes de arquitectura: https://shopify.dev/docs/storefronts/themes/architecture y https://shopify.dev/docs/api/liquid/filters/link_to_vendor .
 

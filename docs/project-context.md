@@ -6,14 +6,14 @@ Actualizado: 06/10/2026. Este documento prevalece sobre las propuestas históric
 
 - Shopify alojará la tienda; Odoo.sh Enterprise 18.0+e será el sistema de inventario y ventas. No existe conector activo.
 - Operación en Perú, moneda PEN (soles). El usuario indica promoción Shopify US$1 por tres meses y después US$25; nombre del plan y condiciones de facturación pendientes de verificar en la cuenta.
-- Portada multimarcas: Xion, MundoBaby y Biflex; información para mayoristas.
+- Portada multimarcas, en este orden: DECOKASA, Xion, Biflex y Mundo Baby; información para mayoristas.
 - Catálogo accesible por categoría o marca. Cada enlace abre una landing con su ficha completa y formulario. Cada landing tiene su propia ruta.
 - Calculadora PVC únicamente en landing interna. La portada ofrece acceso a ella.
 - Versión inicial sin pasarelas de pago. El recorrido termina en formulario de solicitud y atención por un asesor.
 - Enviar el formulario no reserva ni descuenta inventario. El asesor confirma y cierra la venta en Odoo; deben comprobarse las acciones operativas de reserva y entrega en pruebas.
 - Se puede construir mientras se aprueba el entorno Odoo de pruebas. URL y accesos todavía pendientes.
 - El usuario autorizó registrar todo el trabajo del proyecto en este repositorio el 06/10/2026 y conectó GitHub/main a Shopify. En la revisión visual posterior se verificó DECOKASA como tema activo y tienda privada con contraseña. Los cambios de main se sincronizan con ese tema.
-- Diseño de portada ajustado al mockup original aportado por el usuario: cabecera, buscador, categorías, banner y tres tarjetas: Xion, Mundo Baby y Biflex. Se retiró la tarjeta mayorista superior; se conserva el bloque inferior #mayorista y su enlace de navegación. Seis artes independientes regenerados con image_gen y codificados en WebP sustituyen los recortes CSS del mockup; logo, banner y tarjetas admiten imágenes propias desde el editor. Los textos evitan prometer pagos o promociones todavía no configurados.
+- Diseño de portada ajustado al mockup original aportado por el usuario: cabecera, buscador, categorías, banner y cuatro tarjetas en este orden: DECOKASA, Xion, Biflex y Mundo Baby. DECOKASA reutiliza el logo WebP aprobado sobre un fondo amarillo suave; las otras imágenes se conservan. Cuatro columnas en escritorio, dos en tabletas y una en celular. Se retiró la tarjeta mayorista superior; se conserva el bloque inferior #mayorista y su enlace de navegación. Seis artes independientes regenerados con image_gen y codificados en WebP sustituyen los recortes CSS del mockup; logo, banner y tarjetas admiten imágenes propias desde el editor. Los textos evitan prometer pagos o promociones todavía no configurados.
 
 ## Funcionalidades y uso
 
