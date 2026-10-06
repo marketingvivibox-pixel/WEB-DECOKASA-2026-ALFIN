@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "pvc-landing",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

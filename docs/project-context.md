@@ -1,0 +1,42 @@
+# DECOKASA — decisiones vigentes
+
+Actualizado: 06/10/2026. Este documento prevalece sobre las propuestas históricas de `planning/`.
+
+## Confirmado por el usuario
+
+- Shopify alojará la tienda; Odoo.sh Enterprise 18.0+e será el sistema de inventario y ventas. No existe conector activo.
+- Operación en Perú, moneda PEN (soles). El usuario indica promoción Shopify US$1 por tres meses y después US$25; nombre del plan y condiciones de facturación pendientes de verificar en la cuenta.
+- Portada multimarcas: Xion, MundoBaby y Biflex; información para mayoristas.
+- Catálogo accesible por categoría o marca. Cada enlace abre una landing con su ficha completa y formulario. Cada landing tiene su propia ruta.
+- Calculadora PVC únicamente en landing interna. La portada ofrece acceso a ella.
+- Versión inicial sin pasarelas de pago. El recorrido termina en formulario de solicitud y atención por un asesor.
+- Enviar el formulario no reserva ni descuenta inventario. El asesor confirma y cierra la venta en Odoo; deben comprobarse las acciones operativas de reserva y entrega en pruebas.
+- Se puede construir mientras se aprueba el entorno Odoo de pruebas. URL y accesos todavía pendientes.
+- El usuario autorizó registrar todo el trabajo del proyecto en este repositorio el 06/10/2026. Esto permite guardar código y documentos en GitHub; la tienda sigue pendiente de instalación y publicación.
+
+## Funcionalidades y uso
+
+Inicio → catálogo por marca/categoría → landing con ficha → formulario de solicitud → atención del asesor → venta confirmada/cerrada en Odoo.
+
+El tema contiene portada, catálogo, búsqueda, landing de producto, landing PVC, página informativa y 404. En Shopify las landings estándar usan `/products/<handle>`; PVC propone `/pages/pisos-pvc`. Son rutas por configurar, sin tienda publicada. El catálogo debe apuntar a una sola landing por producto; `decokasa.landing_url` permite enlazar una página interna. Las vistas HTML en `preview/` representan el recorrido y usan datos ficticios.
+
+## Trazabilidad y CRM propuestos
+
+Objetivo: anuncio → solicitud → cliente → oportunidad → pedido → venta real. Recomendación pendiente de implementación: registro protegido de solicitudes vinculado a Odoo, y GA4 para análisis. GA4 no sustituye el registro operativo.
+
+- `request_id` UUID por solicitud, persistido en el futuro receptor, para reintentos idempotentes.
+- IDs disponibles de plataforma, cuenta, campaña, grupo/anuncio/creativo; UTMs y click IDs según disponibilidad y consentimiento. Conservar primer y último origen y una copia del origen al recibir cada solicitud.
+- Visitante/sesión pseudónimos y referencias GA4 cuando corresponda. Nunca enviar nombres, teléfonos, correos ni direcciones a GA4.
+- Reutilizar los IDs nativos de Odoo: contacto (`partner`), lead/oportunidad, cotización/pedido, asesor, equipo y etapa. Una persona puede tener varias solicitudes; las fusiones deben preservar vínculos y atribución.
+- `generate_lead` después de recibir y guardar una solicitud real. `purchase` solo después de una venta real validada, con identificador de transacción y PEN. Marcar una oportunidad como Ganada, por sí solo, no implica compra ni cambio de stock.
+- Validar precios y productos en servidor, evitar duplicados y conservar correspondencia SKU/variante/unidad/almacén. El contrato propuesto está en `request-contract.json`.
+
+## Estado real de la base 0.1.0
+
+El formulario solo simula una referencia, sin transmitir ni persistir contactos; no crea clientes, leads ni pedidos. La referencia se reutiliza para reintentos idénticos dentro de la misma página; persistencia duradera pendiente. La atribución de prueba usa `sessionStorage` solo con consentimiento. No hay conexiones Odoo, GA4 ni redes publicitarias. El catálogo, los precios, rendimientos y las ilustraciones de la demostración son ficticios.
+
+## Pendientes
+
+Revisión visual y móvil en navegador/Shopify de prueba; catálogo y fotos reales; configuración PEN y rutas; autoridad de precios y promociones; URL/permisos Odoo; SKU, variantes, unidades, almacenes y operación de cierre; receptor seguro de solicitudes, CRM, consentimiento y medición; pruebas de duplicados, fallos y conciliación antes de publicar.
+
+Los backends existentes de Meta/TikTok son de solo lectura. Consultas sobre sus bases publicitarias parten de la carpeta de Drive `18fQUpb1ZMC7jKO-nenhJFXmbQo1Oyr1W`; no iniciar sesión en redes para buscar esos datos ni modificar sus scripts.

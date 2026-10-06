@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+.shopify/
+work/
+.DS_Store
+Thumbs.db

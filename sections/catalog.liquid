@@ -1,0 +1,4 @@
+<section class="wrap section"><p class="eyebrow">Encuentra lo que necesitas</p><h1>{{ collection.title | escape }}</h1><h2>Explorar por marca</h2><div class="filter-links">{% for vendor in shop.vendors %}{{ vendor | link_to_vendor }}{% endfor %}</div><h2>Explorar por categoría</h2><div class="filter-links">{% for type in shop.types %}{% if type != blank %}{{ type | link_to_type }}{% endif %}{% endfor %}</div>{% paginate collection.products by 24 %}<p>{{ collection.products_count }} productos</p><div class="cards">{% for product in collection.products %}{% render 'product-card', product: product %}{% else %}<p class="note">Esta selección todavía no contiene productos.</p>{% endfor %}</div><div class="filter-links">{{ paginate | default_pagination }}</div>{% endpaginate %}</section>
+{% schema %}
+{"name": "Catálogo", "settings": [], "presets": [{"name": "Catálogo"}]}
+{% endschema %}

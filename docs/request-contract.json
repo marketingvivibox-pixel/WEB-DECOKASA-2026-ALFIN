@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1.0-proposed",
+  "mode": "demo-no-transport",
+  "request_id": "UUID reused on retry of unchanged request",
+  "created_at": "server timestamp on acceptance",
+  "currency": "PEN",
+  "items": [
+    {
+      "shopify_product_id": null,
+      "shopify_variant_id": null,
+      "sku": null,
+      "quantity": 1,
+      "unit": "must validate against Odoo",
+      "price": "server validated; never trust browser"
+    }
+  ],
+  "contact": {
+    "name": null,
+    "phone": null,
+    "email": null,
+    "district": null,
+    "comment": null
+  },
+  "contact_permission": {
+    "accepted": false,
+    "at": null,
+    "version": "pending legal text"
+  },
+  "measurement_consent": {
+    "status": "unknown",
+    "at": null,
+    "version": "demo-v1"
+  },
+  "identity": {
+    "visitor_id": null,
+    "ga4_client_id": null,
+    "ga4_session_id": null,
+    "customer_id": null,
+    "odoo_partner_id": null
+  },
+  "attribution": {
+    "first": null,
+    "last": null,
+    "request_snapshot": null,
+    "ids_supported": [
+      "platform",
+      "account_id",
+      "campaign_id",
+      "adset_id",
+      "adgroup_id",
+      "ad_id",
+      "creative_id",
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_content",
+      "utm_term",
+      "fbclid",
+      "gclid",
+      "ttclid"
+    ]
+  },
+  "crm": {
+    "lead_or_opportunity_id": null,
+    "quotation_or_order_id": null,
+    "advisor_id": null,
+    "team_id": null,
+    "stage_id": null
+  },
+  "sale": {
+    "order_id": null,
+    "transaction_id": null,
+    "closed_at": null
+  },
+  "rules": [
+    "No order, reservation or inventory write on form submission",
+    "Backend must persist idempotently before generate_lead",
+    "PII stays in protected operational store, outside GA4, URLs and logs",
+    "CRM IDs populated by server; never browser-generated Odoo IDs",
+    "purchase only after validated real commercial sale closure",
+    "Demo currently creates reference only; no transport or analytics emission"
+  ]
+}

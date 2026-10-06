@@ -1,0 +1,12 @@
+README.md
+docs/**
+tests/**
+scripts/**
+preview/**
+.git/**
+releases/**
+package.json
+package-lock.json
+node_modules/**
+.gitignore
+AGENTS.md

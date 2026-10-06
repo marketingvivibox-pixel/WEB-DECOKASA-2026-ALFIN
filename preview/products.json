@@ -1,0 +1,48 @@
+[
+  {
+    "handle": "audifonos",
+    "name": "Audífonos inalámbricos",
+    "brand": "Xion",
+    "category": "Tecnología",
+    "sku": "DEMO-XI-001",
+    "price": 12900,
+    "intro": "Explora la presentación y solicita atención para elegir el producto adecuado."
+  },
+  {
+    "handle": "licuadora",
+    "name": "Licuadora para el hogar",
+    "brand": "Xion",
+    "category": "Electrodomésticos",
+    "sku": "DEMO-XI-002",
+    "price": 18900,
+    "intro": "Una opción de muestra para descubrir el catálogo de electrodomésticos."
+  },
+  {
+    "handle": "set-bebe",
+    "name": "Set de cuidado para bebé",
+    "brand": "Mundo Baby",
+    "category": "Bebés",
+    "sku": "DEMO-MB-001",
+    "price": 8900,
+    "intro": "Consulta las presentaciones disponibles con un asesor."
+  },
+  {
+    "handle": "kit-fitness",
+    "name": "Kit de entrenamiento",
+    "brand": "Biflex",
+    "category": "Fitness",
+    "sku": "DEMO-BF-001",
+    "price": 15900,
+    "intro": "Encuentra productos para acompañar tu rutina."
+  },
+  {
+    "handle": "pisos-pvc",
+    "name": "Piso PVC · acabado madera",
+    "brand": "DECOKASA",
+    "category": "Acabados",
+    "sku": "DEMO-PVC-001",
+    "price": 9900,
+    "intro": "Calcula cuántas cajas necesitas para tu proyecto. Medidas, acabado y rendimiento de esta vista son ficticios.",
+    "coverage": 2.2
+  }
+]
