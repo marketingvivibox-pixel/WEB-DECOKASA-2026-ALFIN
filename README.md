@@ -1,6 +1,6 @@
 # DECOKASA · tema Shopify 0.1.0
 
-Tema Shopify 0.1.0 en construcción. Sin publicación, cuentas conectadas, receptor de formularios ni sincronización de stock. El formulario está deliberadamente en modo simulación.
+Tema Shopify 0.1.0 en construcción, conectado a GitHub/main y activo en Shopify. Tienda protegida por contraseña, verificada el 06/10/2026. Sin receptor de formularios ni sincronización de stock: el formulario está deliberadamente en modo simulación.
 
 ## Recorrido
 Inicio → catálogo por marca o tipo → landing con ficha completa → formulario → asesor (integración pendiente). Sin pasarelas ni checkout. No emitir `purchase` desde el navegador.
@@ -20,7 +20,11 @@ Asignar SKU único por variante, unidad/almacén y mapeo Odoo tras validación. 
 El formulario solo simula y no persiste datos personales. Consentimiento de seguimiento de prueba en sessionStorage; rechazar elimina atribución e identificador de visitante. Referencia de solicitud necesaria separada de analítica. UTMs deben contener nombres de campaña sin datos personales. Primer/último origen se conserva en navegación directa durante la sesión si se autoriza; no hay atribución entre sesiones todavía. GA4 y Meta/TikTok pendientes. No hay enlace al CRM activo.
 
 ## Verificación
-`node --test tests/store.test.cjs` comprueba cálculos PVC, límites, UUIDs y preservación de atribución. Shopify Theme Check aprobado sin errores ni advertencias; siete HTML y pruebas DOM simuladas aprobadas (filtros, variantes, formulario, consentimiento). Reintentos conservan referencia solo en la página actual. Pendiente: luego renderizado real en tema de prueba, variantes, navegación móvil y recepción idempotente en Odoo. No subir ni publicar esta base hasta completar dichas verificaciones.
+`npm test` aprueba seis pruebas de lógica y una suite DOM simulada (filtros, variantes, formulario, consentimiento). Shopify Theme Check sin errores ni advertencias; siete HTML y ZIP verificados. Portada renderizada y revisada directamente en Shopify, en escritorio y celular, sin desbordamiento horizontal de página. Reintentos conservan referencia solo en la página actual. Pendiente: catálogo/variantes reales, validación nativa de formularios y recepción idempotente en Odoo antes del lanzamiento comercial.
+
+## Diseño según el mockup original
+
+Cabecera con buscador, menú de categorías, banner negro/amarillo, cuatro marcas y franja promocional adaptados a la imagen del 02/10/2026. Logo, banner y tarjetas usan provisionalmente la referencia original mediante recortes CSS; textos y botones son elementos HTML. Sustituir las imágenes por artes separados desde los selectores de imagen del editor Shopify. La cabecera admite logo propio; la sección Inicio admite banner y cuatro tarjetas. Se adaptó el texto comercial al flujo con asesor y sin pagos en línea.
 
 Fuentes de arquitectura: https://shopify.dev/docs/storefronts/themes/architecture y https://shopify.dev/docs/api/liquid/filters/link_to_vendor .
 
@@ -31,12 +35,14 @@ Fuentes de arquitectura: https://shopify.dev/docs/storefronts/themes/architectur
 - [Documentos de planificación y esquemas](docs/planning/README.md).
 - [Referencia visual inicial](docs/references/mockup-inicial-decokasa-2026-10-02.jpeg).
 - [Demostración navegable](preview/DECOKASA-inicio.html): descargar el repositorio y abrir este HTML en el navegador; GitHub muestra su código.
-- [Paquete del tema](releases/DECOKASA-tema-0.1.0.zip): contiene solo los 27 archivos Shopify. Instalación y publicación pendientes.
+- [Paquete del tema](releases/DECOKASA-tema-0.1.0.zip): contiene solo los 30 archivos Shopify. GitHub/main ya sincroniza el tema activo.
 
 ## Reproducir las verificaciones
 
 Con Node.js 20 o superior: `npm ci` y `npm test`. Incluye seis pruebas de lógica y la prueba DOM simulada; esta última no comprueba presentación visual ni validación nativa de formularios.
 
 Con Python 3: `python scripts/verify_store.py` revisa las siete páginas, enlaces, anclas, IDs, JSON y esquemas de secciones y regenera el ZIP del tema a partir del código actual.
+
+Después de cambiar portada/cabecera/estilos: `node scripts/sync_preview.cjs` regenera las vistas locales desde las secciones Liquid y copia los recursos; luego ejecutar el verificador y las pruebas. La demostración conserva su catálogo ficticio.
 
 Shopify Theme Check: `npx @shopify/cli theme check --path . --output json`. La herramienta no requiere conexión a la tienda para esta revisión estática. `.shopifyignore` excluye documentos, pruebas, vistas y herramientas del tema.
