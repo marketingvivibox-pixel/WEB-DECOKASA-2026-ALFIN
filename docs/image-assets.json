@@ -46,5 +46,13 @@
     "bytes": 189298,
     "tool": "image_gen",
     "encoding": "WebP quality 94"
+  },
+  {
+    "asset": "decokasa-hogar.webp",
+    "width": 1860,
+    "height": 846,
+    "bytes": 438486,
+    "tool": "image_gen",
+    "encoding": "WebP quality 94"
   }
 ]

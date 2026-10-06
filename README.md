@@ -24,7 +24,7 @@ El formulario solo simula y no persiste datos personales. Consentimiento de segu
 
 ## Diseño según el mockup original
 
-Cabecera con buscador, menú de categorías, banner negro/amarillo, cuatro marcas (DECOKASA, Xion, Biflex y Mundo Baby) y franja promocional adaptados a la imagen del 02/10/2026. Seis artes independientes regenerados con image_gen sustituyen los recortes del mockup y se entregan en WebP de alta resolución (1860–2172 px de ancho). Textos y botones siguen siendo HTML. DECOKASA reutiliza el logo WebP aprobado sobre fondo amarillo suave. Las tarjetas se distribuyen en cuatro columnas en escritorio, dos en tabletas y una en celular. Solo se mantiene el bloque mayorista inferior. La cabecera admite logo propio; la sección Inicio admite banner y cuatro tarjetas. Se adaptó el texto comercial al flujo con asesor y sin pagos en línea. Prompts en `docs/image-prompts.json`; dimensiones, peso y codificación en `docs/image-assets.json`.
+Cabecera con buscador, menú de categorías, banner negro/amarillo, cuatro marcas (DECOKASA, Xion, Biflex y Mundo Baby) y franja promocional adaptados a la imagen del 02/10/2026. Siete artes independientes regenerados con image_gen sustituyen los recortes del mockup y se entregan en WebP de alta resolución (1860–2172 px de ancho). Textos y botones siguen siendo HTML. DECOKASA muestra pisos PVC y SPC, paneles PVC, wall panel, alfombras y artículos para el hogar en una imagen propia con el logo integrado. Las tarjetas se distribuyen en cuatro columnas en escritorio, dos en tabletas y una en celular. Solo se mantiene el bloque mayorista inferior. La cabecera admite logo propio; la sección Inicio admite banner y cuatro tarjetas. Se adaptó el texto comercial al flujo con asesor y sin pagos en línea. Prompts en `docs/image-prompts.json`; dimensiones, peso y codificación en `docs/image-assets.json`.
 
 Fuentes de arquitectura: https://shopify.dev/docs/storefronts/themes/architecture y https://shopify.dev/docs/api/liquid/filters/link_to_vendor .
 
@@ -35,7 +35,7 @@ Fuentes de arquitectura: https://shopify.dev/docs/storefronts/themes/architectur
 - [Documentos de planificación y esquemas](docs/planning/README.md).
 - [Referencia visual inicial](docs/references/mockup-inicial-decokasa-2026-10-02.jpeg).
 - [Demostración navegable](preview/DECOKASA-inicio.html): descargar el repositorio y abrir este HTML en el navegador; GitHub muestra su código.
-- [Paquete del tema](releases/DECOKASA-tema-0.1.0.zip): contiene solo los 35 archivos Shopify. GitHub/main ya sincroniza el tema activo.
+- [Paquete del tema](releases/DECOKASA-tema-0.1.0.zip): contiene solo los 36 archivos Shopify. GitHub/main ya sincroniza el tema activo.
 
 ## Reproducir las verificaciones
 
