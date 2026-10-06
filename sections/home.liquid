@@ -1,4 +1,81 @@
-<section class="hero"><div class="wrap hero-grid"><div><p class="eyebrow">Todo para tu día a día</p><h1>Todo lo que necesitas,<br><span>en un solo lugar.</span></h1><p>Descubre productos para tu hogar, tu familia y tu próximo proyecto. Elige lo que necesitas y recibe atención de un asesor.</p><div class="actions"><a class="button yellow" href="{{ routes.all_products_collection_url }}">Explorar el catálogo →</a><a class="button outline" href="#marcas">Ver nuestras marcas</a></div></div>{% if section.settings.hero_image != blank %}{{ section.settings.hero_image | image_url: width: 1200 | image_tag: class: 'art', widths: '480, 800, 1200', sizes: '(min-width: 900px) 50vw, 100vw', loading: 'eager' }}{% else %}{% render 'demo-art' %}{% endif %}</div></section><div class="wrap trust"><div><strong>Encuentra tu producto</strong><small>Explora por marca o categoría.</small></div><div><strong>Solicita tu compra</strong><small>Comparte lo que necesitas en el formulario.</small></div><div><strong>Coordina con un asesor</strong><small>Confirma disponibilidad e importe final.</small></div></div><section class="wrap section" id="marcas"><div class="section-head"><h2>Nuestras marcas</h2><a href="{{ routes.all_products_collection_url }}">Ver todo →</a></div><div class="brands"><a class="brand xion" href="{{ routes.collections_url }}/vendors?q=Xion"><strong>XION</strong><small>Tecnología y electrodomésticos →</small></a><a class="brand baby" href="{{ routes.collections_url }}/vendors?q=Mundo%20Baby"><strong>MUNDO<br>BABY</strong><small>Para acompañar su crecimiento →</small></a><a class="brand biflex" href="{{ routes.collections_url }}/vendors?q=Biflex"><strong>BIFLEX</strong><small>Activa tu día →</small></a><a class="brand mayor" href="#mayorista"><strong>DECOKASA</strong><small>Consultas para tu negocio →</small></a></div></section><section class="wrap section"><div class="section-head"><h2>Explora el catálogo</h2><a href="{{ routes.all_products_collection_url }}">Elegir por categoría →</a></div><div class='cards'>{% for product in section.settings.featured_collection.products limit: 3 %}{% render 'product-card', product: product %}{% else %}<p class='note'>Selecciona una colección en el editor para mostrar productos.</p>{% endfor %}</div></section><section class="wrap section" id="mayorista"><div class="banner"><div><p class="eyebrow">Para tu negocio</p><h2>¿Buscas productos por volumen?</h2><p>Elige un producto y cuéntanos la cantidad que necesitas.</p></div><a class="button" href="{{ routes.all_products_collection_url }}">Consultar productos →</a></div></section>
+<section class="home-hero" aria-labelledby="home-title"><div class="wrap home-hero-grid"><div class="hero-copy"><h1 id="home-title">{{ section.settings.heading | escape }}<span>{{ section.settings.heading_accent | escape }}</span></h1><div class="actions"><a class="button yellow" href="{{ routes.all_products_collection_url }}">{{ section.settings.primary_label | escape }}{% render 'icon', name: 'arrow' %}</a><a class="button outline" href="{{ routes.all_products_collection_url }}">Ver categorías{% render 'icon', name: 'arrow' %}</a></div><div class="hero-benefits"><div>{% render 'icon', name: 'truck' %}<span>Coordina<br>tu envío</span></div><div>{% render 'icon', name: 'shield' %}<span>Compra<br>con asesor</span></div><div>{% render 'icon', name: 'form' %}<span>Solicita<br>tu producto</span></div><div>{% render 'icon', name: 'headphones' %}<span>Atención<br>personalizada</span></div></div></div><div class="hero-media">{% if section.settings.hero_image != blank %}{{ section.settings.hero_image | image_url: width: 1600 | image_tag: widths: '640, 960, 1600', sizes: '(min-width: 900px) 56vw, 100vw', loading: 'eager', class: 'hero-photo' }}{% else %}{% render 'reference-image', crop: 'hero', loading: 'eager' %}{% endif %}</div></div></section>
+<section class="wrap home-brands" id="marcas" aria-labelledby="brands-title"><h2 id="brands-title">Nuestras marcas</h2><div class="brands visual-brands">
+<a class="brand xion brand-visual" href="{{ routes.collections_url }}/vendors?q=Xion"><strong class="sr-only">XION</strong><span class="sr-only"> · Tecnología y electrodomésticos</span>{% if section.settings.xion_image != blank %}{{ section.settings.xion_image | image_url: width: 800 | image_tag: widths: '400, 800', sizes: '(min-width: 900px) 24vw, 48vw', loading: 'lazy', class: 'brand-photo', alt: '' }}{% else %}{% render 'reference-image', crop: 'xion' %}{% endif %}<span class="brand-go">{% render 'icon', name: 'arrow' %}</span></a>
+<a class="brand baby brand-visual" href="{{ routes.collections_url }}/vendors?q=Mundo%20Baby"><strong class="sr-only">MUNDOBABY</strong><span class="sr-only"> · Para acompañar su crecimiento</span>{% if section.settings.baby_image != blank %}{{ section.settings.baby_image | image_url: width: 800 | image_tag: widths: '400, 800', sizes: '(min-width: 900px) 24vw, 48vw', loading: 'lazy', class: 'brand-photo', alt: '' }}{% else %}{% render 'reference-image', crop: 'baby' %}{% endif %}<span class="brand-go">{% render 'icon', name: 'arrow' %}</span></a>
+<a class="brand biflex brand-visual" href="{{ routes.collections_url }}/vendors?q=Biflex"><strong class="sr-only">BIFLEX</strong><span class="sr-only"> · Activa tu día</span>{% if section.settings.biflex_image != blank %}{{ section.settings.biflex_image | image_url: width: 800 | image_tag: widths: '400, 800', sizes: '(min-width: 900px) 24vw, 48vw', loading: 'lazy', class: 'brand-photo', alt: '' }}{% else %}{% render 'reference-image', crop: 'biflex' %}{% endif %}<span class="brand-go">{% render 'icon', name: 'arrow' %}</span></a>
+<a class="brand mayor brand-visual" href="#mayorista"><strong class="sr-only">DECOKASA MAYORISTA</strong><span class="sr-only"> · Productos para tu negocio</span>{% if section.settings.wholesale_image != blank %}{{ section.settings.wholesale_image | image_url: width: 800 | image_tag: widths: '400, 800', sizes: '(min-width: 900px) 24vw, 48vw', loading: 'lazy', class: 'brand-photo', alt: '' }}{% else %}{% render 'reference-image', crop: 'wholesale' %}{% endif %}<span class="brand-go">{% render 'icon', name: 'arrow' %}</span></a>
+</div></section>
+<div class="wrap"><a class="opportunity" href="{{ routes.all_products_collection_url }}"><span class="opportunity-icon">{% render 'icon', name: 'tag' %}</span><span>{{ section.settings.promo_text | escape }}</span><span class="opportunity-go">{% render 'icon', name: 'arrow' %}</span><span class="opportunity-art" aria-hidden="true">{% render 'reference-image', crop: 'promo' %}</span></a></div>
+{% if section.settings.featured_collection != blank %}<section class="wrap section home-featured"><div class="section-head"><h2>Explora el catálogo</h2><a href="{{ routes.all_products_collection_url }}">Ver todos {% render 'icon', name: 'arrow' %}</a></div><div class="cards">{% for product in section.settings.featured_collection.products limit: 3 %}{% render 'product-card', product: product %}{% endfor %}</div></section>{% endif %}
+<section class="wrap section how-to" id="como-comprar"><div class="section-head"><div><p class="eyebrow">Así de fácil</p><h2>Elige. Solicita. Coordina.</h2></div><p>Tu próxima compra empieza aquí.</p></div><div class="buy-steps"><div><span class="step-number">01</span><div><h3>Encuentra tu producto</h3><p>Explora el catálogo por categoría o marca y conoce cada producto en su página.</p></div></div><div><span class="step-number">02</span><div><h3>Completa tu solicitud</h3><p>Indica la presentación y cantidad que necesitas en el formulario del producto.</p></div></div><div><span class="step-number">03</span><div><h3>Coordina con un asesor</h3><p>Confirma disponibilidad, importe final, forma de pago y entrega antes de comprar.</p></div></div></div></section>
+<section class="wrap wholesale-section" id="mayorista"><div class="wholesale-banner"><div class="wholesale-symbol">{% render 'icon', name: 'box' %}</div><div><p class="eyebrow">División mayorista</p><h2>Más posibilidades para tu negocio.</h2><p>Explora los productos e indica la cantidad que buscas en tu solicitud.</p></div><a class="button yellow" href="{{ routes.all_products_collection_url }}">Ver productos {% render 'icon', name: 'arrow' %}</a></div></section>
 {% schema %}
-{"name": "Inicio multimarcas", "settings": [{"type": "image_picker", "id": "hero_image", "label": "Imagen principal"}, {"type": "collection", "id": "featured_collection", "label": "Colección destacada"}], "presets": [{"name": "Inicio multimarcas"}]}
+{
+  "name": "Inicio multimarcas",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título principal",
+      "default": "Todo lo que necesitas,"
+    },
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Título en amarillo",
+      "default": "en un solo lugar."
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Botón principal",
+      "default": "Explorar catálogo"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Imagen principal (solo fotografía)"
+    },
+    {
+      "type": "paragraph",
+      "content": "Las imágenes de referencia se muestran hasta cargar los artes definitivos. Fotografía principal recomendada: 920 × 396 px. Tarjetas: 740 × 340 px."
+    },
+    {
+      "type": "image_picker",
+      "id": "xion_image",
+      "label": "Imagen Xion"
+    },
+    {
+      "type": "image_picker",
+      "id": "baby_image",
+      "label": "Imagen Mundo Baby"
+    },
+    {
+      "type": "image_picker",
+      "id": "biflex_image",
+      "label": "Imagen Biflex"
+    },
+    {
+      "type": "image_picker",
+      "id": "wholesale_image",
+      "label": "Imagen Mayorista"
+    },
+    {
+      "type": "text",
+      "id": "promo_text",
+      "label": "Texto de la franja",
+      "default": "Descubre todo lo que tenemos para ti."
+    },
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Colección destacada"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Inicio multimarcas"
+    }
+  ]
+}
 {% endschema %}
