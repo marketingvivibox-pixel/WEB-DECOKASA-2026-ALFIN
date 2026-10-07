@@ -5,7 +5,7 @@
 - La franja superior de servicios permanece visible al desplazarse. La portada incorpora un botón flotante accesible y adaptable que abre WhatsApp al `+51 941 599 516` con un texto prellenado; el cliente lo revisa y envía manualmente.
 - Se añadió una vista local de teléfono (390 × 844 px) en `preview/DECOKASA-movil.html`; muestra la portada de la demostración dentro de un marco y no sustituye la vista previa del tema en Shopify.
 - Número y mensaje se pueden editar en los ajustes de la sección Inicio. Se actualizaron las siete vistas locales y el ZIP del tema.
-- Validación local: siete pruebas Node aprobadas; siete páginas/rutas/JSON/enlaces verificados; ZIP de 36 archivos. Pendiente confirmar visualmente la sincronización en Shopify después del push.
+- Validación local: siete pruebas Node aprobadas; siete páginas/rutas/JSON/enlaces verificados; ZIP de 36 archivos. Commit 8508428 enviado a GitHub/main y hash remoto confirmado. La vista de Shopify debe recibir la sincronización por la conexión existente; no se comprobó visualmente en el administrador en este turno.
 
 ## 06/10/2026 — DECOKASA con revestimientos y hogar
 
