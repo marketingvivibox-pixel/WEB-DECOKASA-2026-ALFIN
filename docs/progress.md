@@ -4,7 +4,7 @@
 
 - La franja de servicios ahora permanece fija al borde superior durante todo el desplazamiento de la página, no solo dentro de la sección de cabecera. El tema reserva el espacio inicial y mide la altura de la franja para escritorio y móvil.
 - Se regeneraron las siete vistas locales y el ZIP Shopify de 37 archivos.
-- Validación: siete pruebas Node aprobadas; siete páginas, rutas, enlaces y JSON válidos; Shopify Theme Check sin hallazgos. Pendiente confirmar visualmente la sincronización en Shopify después del push.
+- Validación: siete pruebas Node aprobadas; siete páginas, rutas, enlaces y JSON válidos; Shopify Theme Check sin hallazgos. Commit `448fce6` enviado a GitHub/main y árbol limpio. La sincronización depende de la conexión existente; queda pendiente confirmar visualmente en el administrador Shopify.
 
 ## 07/10/2026 — Favicon DECOKASA
 
