@@ -3,8 +3,8 @@
 ## 07/10/2026 — Favicon DECOKASA
 
 - Se añadió `assets/favicon.png`, un favicon PNG transparente de 128 × 128 px basado en el símbolo amarillo del logo DECOKASA. El `<head>` global del tema lo carga en todas las páginas.
-- El sincronizador de vistas locales copia el icono para que la demostración lo muestre también. El paquete Shopify se regenerará desde el tema.
-- Validaciones pendientes en este registro hasta completar Theme Check, pruebas, verificador de tienda y confirmar el envío de `main`.
+- El sincronizador copia el icono a las vistas locales y el ZIP Shopify actualizado contiene 37 archivos.
+- Validación: siete pruebas Node aprobadas; siete páginas, enlaces y JSON válidos; Shopify Theme Check sin hallazgos. Commit `9d93471` enviado a GitHub/main y referencia remota confirmada. La conexión existente sincroniza los cambios con el tema Shopify; no se realizó verificación visual del favicon en el administrador durante este turno.
 
 ## 07/10/2026 — Barra fija y acceso a WhatsApp
 
