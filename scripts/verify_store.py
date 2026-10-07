@@ -13,7 +13,7 @@ class Check(HTMLParser):
         if tag=='form' and 'data-request-form' in a:self.forms.append(a)
         if 'data-pvc' in a:self.calcs+=1
         if tag=='h1':self.h1+=1
-pages=list(out.glob('*.html'))
+pages=[p for p in out.glob('*.html') if p.name!='DECOKASA-movil.html']
 assert len(pages)==7, 'Se esperan siete páginas de demostración'
 for page in pages:
     c=Check();c.feed(page.read_text(encoding='utf-8'))

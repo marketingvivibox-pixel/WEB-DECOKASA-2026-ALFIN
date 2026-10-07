@@ -1,6 +1,6 @@
 # DECOKASA — decisiones vigentes
 
-Actualizado: 06/10/2026. Este documento prevalece sobre las propuestas históricas de `planning/`.
+Actualizado: 07/10/2026. Este documento prevalece sobre las propuestas históricas de `planning/`.
 
 ## Confirmado por el usuario
 
@@ -14,6 +14,8 @@ Actualizado: 06/10/2026. Este documento prevalece sobre las propuestas históric
 - Se puede construir mientras se aprueba el entorno Odoo de pruebas. URL y accesos todavía pendientes.
 - El usuario autorizó registrar todo el trabajo del proyecto en este repositorio el 06/10/2026 y conectó GitHub/main a Shopify. En la revisión visual posterior se verificó DECOKASA como tema activo y tienda privada con contraseña. Los cambios de main se sincronizan con ese tema.
 - Diseño de portada ajustado al mockup original aportado por el usuario: cabecera, buscador, categorías, banner y cuatro tarjetas en este orden: DECOKASA, Xion, Biflex y Mundo Baby. DECOKASA muestra pisos PVC y SPC, paneles PVC, wall panel, alfombras y artículos para el hogar en una imagen propia con el logo integrado; las otras imágenes se conservan. Cuatro columnas en escritorio, dos en tabletas y una en celular. Se retiró la tarjeta mayorista superior; se conserva el bloque inferior #mayorista y su enlace de navegación. Siete artes independientes regenerados con image_gen y codificados en WebP sustituyen los recortes CSS del mockup; logo, banner y tarjetas admiten imágenes propias desde el editor. Los textos evitan prometer pagos o promociones todavía no configurados.
+
+- El teléfono de atención WhatsApp compartido por el usuario es `+51 941 599 516`. La portada ofrece un acceso flotante con mensaje prellenado para consultas/cotizaciones. El enlace abre WhatsApp, pero no envía el mensaje hasta que el cliente lo revise y pulse enviar. La franja negra de servicios queda fija al desplazarse. Hay una vista local adaptada a teléfono en `preview/DECOKASA-movil.html`; es una ayuda de revisión, no un emulador del editor Shopify.
 
 ## Funcionalidades y uso
 

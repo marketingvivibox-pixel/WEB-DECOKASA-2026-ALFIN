@@ -22,6 +22,7 @@ const home=load('DECOKASA-inicio.html');
 assert.equal(home.document.querySelector('.brand.xion strong').textContent,'XION');
 assert.equal(home.document.querySelector('.brand.baby strong').textContent,'MUNDOBABY');
 assert.equal(home.document.querySelector('.brand.biflex strong').textContent,'BIFLEX');
+assert.equal(home.document.querySelector('.whatsapp-float').getAttribute('href'),'https://wa.me/51941599516?text=Hola%2C+visit%C3%A9+la+tienda+DECOKASA+y+quisiera+ayuda+con+un+producto+o+una+cotizaci%C3%B3n.');
 const catalog=load('catalogo.html','?marca=Xion');
 const visible=()=>[...catalog.document.querySelectorAll('[data-card]')].filter(e=>!e.hidden);
 assert.equal(visible().length,2);

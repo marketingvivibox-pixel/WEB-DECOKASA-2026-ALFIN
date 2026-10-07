@@ -7,19 +7,21 @@ const root = path.resolve(__dirname, '..');
 const engine = new Liquid({ root: path.join(root, 'snippets'), extname: '.liquid' });
 engine.registerFilter('asset_url', name => `assets/${name}`);
 const routes = { root_url: 'DECOKASA-inicio.html', search_url: 'catalogo.html', all_products_collection_url: 'catalogo.html', collections_url: 'collections' };
-async function section(name) {
+async function section(name, overrides = {}) {
   const raw = fs.readFileSync(path.join(root, 'sections', `${name}.liquid`), 'utf8');
   const schema = JSON.parse(raw.match(/{% schema %}([\s\S]*?){% endschema %}/)[1]);
-  const settings = Object.fromEntries(schema.settings.filter(s => s.id).map(s => [s.id, s.default ?? '']));
+  const settings = { ...Object.fromEntries(schema.settings.filter(s => s.id).map(s => [s.id, s.default ?? ''])), ...overrides };
   const html = await engine.parseAndRender(raw.replace(/{% schema %}[\s\S]*?{% endschema %}/, ''), { section: { settings }, routes, search: { terms: '' } });
   return html.replaceAll('collections/types?q=', 'catalogo.html?categoria=').replaceAll('collections/vendors?q=', 'catalogo.html?marca=');
 }
 async function main() {
-  const header = await section('header'), home = await section('home');
+  const template = JSON.parse(fs.readFileSync(path.join(root, 'templates/index.json'), 'utf8'));
+  const homeSettings = template.sections?.main?.settings ?? {};
+  const header = await section('header'), home = await section('home', homeSettings);
   const css = fs.readFileSync(path.join(root, 'assets/decokasa.css'), 'utf8');
   const js = fs.readFileSync(path.join(root, 'assets/decokasa.js'), 'utf8');
   const preview = path.join(root, 'preview');
-  for (const file of fs.readdirSync(preview).filter(f => f.endsWith('.html'))) {
+  for (const file of fs.readdirSync(preview).filter(f => f.endsWith('.html') && f !== 'DECOKASA-movil.html')) {
     const { document } = parseHTML(fs.readFileSync(path.join(preview, file), 'utf8'));
     const content = file === 'DECOKASA-inicio.html' ? home : document.querySelector('main').innerHTML;
     const footer = document.querySelector('footer').outerHTML;

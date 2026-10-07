@@ -28,6 +28,8 @@ Cabecera con buscador, menú de categorías, banner negro/amarillo, cuatro marca
 
 Fuentes de arquitectura: https://shopify.dev/docs/storefronts/themes/architecture y https://shopify.dev/docs/api/liquid/filters/link_to_vendor .
 
+La franja superior de servicios permanece fija al desplazarse. La portada incluye un botón flotante de WhatsApp que abre el chat con un mensaje prellenado para que el visitante lo revise y lo envíe manualmente. Número configurado: Perú, `+51 941 599 516`. No se envía nada automáticamente. La vista móvil local está en `preview/DECOKASA-movil.html` y muestra el inicio dentro de un marco de teléfono de 390 × 844 px.
+
 ## Registro del proyecto
 
 - [Decisiones actuales y arquitectura](docs/project-context.md).
@@ -35,6 +37,7 @@ Fuentes de arquitectura: https://shopify.dev/docs/storefronts/themes/architectur
 - [Documentos de planificación y esquemas](docs/planning/README.md).
 - [Referencia visual inicial](docs/references/mockup-inicial-decokasa-2026-10-02.jpeg).
 - [Demostración navegable](preview/DECOKASA-inicio.html): descargar el repositorio y abrir este HTML en el navegador; GitHub muestra su código.
+- [Vista móvil de la portada](preview/DECOKASA-movil.html): abrir este HTML en el navegador para verla dentro de un marco de teléfono. Para la tienda conectada, usar la vista móvil del editor de temas Shopify.
 - [Paquete del tema](releases/DECOKASA-tema-0.1.0.zip): contiene solo los 36 archivos Shopify. GitHub/main ya sincroniza el tema activo.
 
 ## Reproducir las verificaciones
