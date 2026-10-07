@@ -9,6 +9,15 @@
   const api={boxes,origin,updateAttribution,uuid,requestDraft};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;
   if(!root.document)return;
+  function reserveServiceBar(){
+    const bar=root.document.querySelector('.service-bar');
+    if(!bar)return;
+    const sync=()=>root.document.documentElement.style.setProperty('--service-bar-height',`${bar.getBoundingClientRect().height}px`);
+    sync();
+    if(typeof root.ResizeObserver==='function')new root.ResizeObserver(sync).observe(bar);
+    else root.addEventListener('resize',sync);
+  }
+  reserveServiceBar();
   function get(key){try{return root.sessionStorage.getItem(key);}catch{return null;}}
   function set(key,value){try{root.sessionStorage.setItem(key,value);}catch{}}
   function remove(key){try{root.sessionStorage.removeItem(key);}catch{}}
