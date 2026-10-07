@@ -23,6 +23,7 @@ async function main() {
   const preview = path.join(root, 'preview');
   for (const file of fs.readdirSync(preview).filter(f => f.endsWith('.html') && f !== 'DECOKASA-movil.html')) {
     const { document } = parseHTML(fs.readFileSync(path.join(preview, file), 'utf8'));
+    document.head.insertAdjacentHTML('beforeend', '<link rel="icon" type="image/png" sizes="128x128" href="assets/favicon.png">');
     const content = file === 'DECOKASA-inicio.html' ? home : document.querySelector('main').innerHTML;
     const footer = document.querySelector('footer').outerHTML;
     const consent = document.querySelector('[data-consent-banner]')?.outerHTML ?? document.querySelector('.consent')?.outerHTML ?? '';
@@ -31,7 +32,7 @@ async function main() {
     fs.writeFileSync(path.join(preview, file), html);
   }
   fs.mkdirSync(path.join(preview, 'assets'), { recursive: true });
-  for (const asset of fs.readdirSync(path.join(root, 'assets')).filter(name => /^decokasa-.*\.webp$/.test(name))) {
+  for (const asset of fs.readdirSync(path.join(root, 'assets')).filter(name => /^(decokasa-.*\.webp|favicon\.png)$/.test(name))) {
     fs.copyFileSync(path.join(root, 'assets', asset), path.join(preview, 'assets', asset));
   }
   console.log('Seven preview pages synchronized with the Shopify header and homepage.');

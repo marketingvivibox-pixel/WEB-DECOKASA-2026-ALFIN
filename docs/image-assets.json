@@ -54,5 +54,12 @@
     "bytes": 438486,
     "tool": "image_gen",
     "encoding": "WebP quality 94"
+  },
+  {
+    "asset": "favicon.png",
+    "width": 128,
+    "height": 128,
+    "bytes": 8704,
+    "source": "Símbolo recortado de decokasa-logo.webp; PNG transparente, optimizado con Pillow"
   }
 ]

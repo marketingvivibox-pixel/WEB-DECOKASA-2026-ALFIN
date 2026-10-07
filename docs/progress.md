@@ -1,5 +1,11 @@
 # Avances y validación
 
+## 07/10/2026 — Favicon DECOKASA
+
+- Se añadió `assets/favicon.png`, un favicon PNG transparente de 128 × 128 px basado en el símbolo amarillo del logo DECOKASA. El `<head>` global del tema lo carga en todas las páginas.
+- El sincronizador de vistas locales copia el icono para que la demostración lo muestre también. El paquete Shopify se regenerará desde el tema.
+- Validaciones pendientes en este registro hasta completar Theme Check, pruebas, verificador de tienda y confirmar el envío de `main`.
+
 ## 07/10/2026 — Barra fija y acceso a WhatsApp
 
 - La franja superior de servicios permanece visible al desplazarse. La portada incorpora un botón flotante accesible y adaptable que abre WhatsApp al `+51 941 599 516` con un texto prellenado; el cliente lo revisa y envía manualmente.
