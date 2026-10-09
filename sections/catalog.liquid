@@ -1,16 +1,21 @@
 {% assign is_demo = false %}
+{% assign default_brands = 'decokasa|xion|biflex|mundo-baby' | split: '|' %}
+{% assign catalog_brands = settings.catalog_brands | default: default_brands %}
+{% assign default_categories = 'tecnologia|electrodomesticos|bebes|fitness|hogar-y-acabados' | split: '|' %}
+{% assign catalog_types = settings.catalog_categories | default: default_categories %}
+
 <section class="catalog-page">
   <div class="wrap">
     <nav class="breadcrumb catalog-breadcrumb" aria-label="Ruta de navegación"><a href="{{ routes.root_url }}">Inicio</a><span aria-hidden="true">/</span><span>Catálogo</span></nav>
     {% if is_demo %}<p class="catalog-demo-note">Vista de muestra · Productos e ilustraciones de ejemplo.</p>{% endif %}
     <div class="catalog-intro">
-      <div><p class="eyebrow">Cuatro marcas, un solo lugar</p><h1>{{ section.settings.heading | escape }}</h1><p>{{ section.settings.description | escape }}</p></div>
+      <div><p class="eyebrow">Nuestras marcas, un solo lugar</p><h1>{{ section.settings.heading | escape }}</h1><p>{{ section.settings.description | escape }}</p></div>
       <div class="catalog-intro-note">{% render 'icon', name: 'headphones' %}<div><strong>Elige con ayuda de un asesor</strong><span>Consulta el precio, la disponibilidad y la entrega.</span></div></div>
     </div>
     <nav class="catalog-brands" aria-label="Explorar marcas">
-      {% assign all_brands_selected = false %}{% if is_demo %}{% assign all_brands_selected = true %}{% elsif collection.handle == 'all' and collection.current_vendor == blank and collection.current_type == blank %}{% assign all_brands_selected = true %}{% endif %}
-      <a class="catalog-brand-all{% if all_brands_selected %} is-selected{% endif %}" href="{{ routes.all_products_collection_url }}" {% if is_demo %}data-brand-choice=""{% endif %}{% if all_brands_selected %} aria-current="page"{% endif %}>Todas las marcas</a>
-      {% for vendor in shop.vendors %}<a{% if collection.current_vendor == vendor %} class="is-selected" aria-current="page"{% endif %} href="{{ vendor | url_for_vendor }}" {% if is_demo %}data-brand-choice="{{ vendor | escape }}"{% endif %}><span class="brand-dot brand-dot-{{ vendor | handleize }}" aria-hidden="true"></span>{{ vendor | escape }}</a>{% endfor %}
+      {% assign selected_brand = '' %}{% unless is_demo %}{% for vendor in catalog_brands %}{% assign brand_collection = vendor %}{% if brand_collection.url == blank %}{% assign brand_collection = collections[vendor] %}{% endif %}{% if collection.handle == brand_collection.handle %}{% assign selected_brand = brand_collection.handle %}{% endif %}{% endfor %}{% endunless %}
+      <a class="catalog-brand-all{% if selected_brand == blank %} is-selected{% endif %}" href="{{ routes.all_products_collection_url }}" {% if is_demo %}data-brand-choice=""{% endif %}{% if selected_brand == blank %} aria-current="page"{% endif %}>Todas las marcas</a>
+      {% for vendor in catalog_brands %}{% assign brand_collection = vendor %}{% if brand_collection.url == blank %}{% assign brand_collection = collections[vendor] %}{% endif %}{% if brand_collection.url != blank %}<a{% if selected_brand == brand_collection.handle %} class="is-selected" aria-current="page"{% endif %} href="{{ brand_collection.url }}" {% if is_demo %}data-brand-choice="{{ brand_collection.title | escape }}"{% endif %}><span class="brand-dot brand-dot-{{ brand_collection.handle }}" aria-hidden="true"></span>{{ brand_collection.title | escape }}</a>{% endif %}{% endfor %}
     </nav>
     <div class="catalog-layout">
       <aside class="catalog-sidebar" aria-label="Filtros del catálogo">
@@ -32,12 +37,14 @@
                     </fieldset>
                   {% endif %}
                 {% endfor %}
-                {% unless has_catalog_filters %}
-                  <h2 class="catalog-filter-heading">Marca</h2><div class="catalog-route-links">{% for vendor in shop.vendors %}{{ vendor | link_to_vendor }}{% endfor %}</div>
-                  <h2 class="catalog-filter-heading">Categoría</h2><div class="catalog-route-links">{% for type in shop.types %}{% if type != blank %}{{ type | link_to_type }}{% endif %}{% endfor %}</div>
-                {% endunless %}
-                <button class="button" type="submit">Aplicar selección</button>
-                <a class="catalog-clear" href="{{ collection.url }}">Limpiar filtros</a>
+                {% if has_catalog_filters %}
+                  <button class="button" type="submit">Aplicar selección</button>
+                  <a class="catalog-clear" href="{{ collection.url }}">Limpiar filtros</a>
+                {% else %}
+                  <h2 class="catalog-filter-heading">Marca</h2><div class="catalog-route-links">{% for vendor in catalog_brands %}{% assign brand_collection = vendor %}{% if brand_collection.url == blank %}{% assign brand_collection = collections[vendor] %}{% endif %}{% if brand_collection.url != blank %}<a href="{{ brand_collection.url }}"{% if selected_brand == brand_collection.handle %} aria-current="page"{% endif %}>{{ brand_collection.title | escape }}</a>{% endif %}{% endfor %}</div>
+                  <h2 class="catalog-filter-heading">Categoría</h2><div class="catalog-route-links">{% for type in catalog_types %}{% assign category_collection = type %}{% if category_collection.url == blank %}{% assign category_collection = collections[type] %}{% endif %}{% if category_collection.url != blank %}<a href="{{ category_collection.url }}"{% if collection.handle == category_collection.handle %} aria-current="page"{% endif %}>{{ category_collection.title | escape }}</a>{% endif %}{% endfor %}</div>
+                  <a class="catalog-clear" href="{{ routes.all_products_collection_url }}">Ver todo el catálogo</a>
+                {% endif %}
               </form>
             {% endif %}
           </div>
@@ -57,7 +64,7 @@
         </div>
         {% unless is_demo %}<div class="catalog-active-filters">{% for filter in collection.filters %}{% for value in filter.active_values %}<a href="{{ value.url_to_remove }}" aria-label="Quitar filtro {{ value.label | escape }}">{{ value.label | escape }} <span aria-hidden="true">×</span></a>{% endfor %}{% endfor %}</div>{% endunless %}
         {% paginate collection.products by 24 %}
-          <div class="cards catalog-grid" data-catalog-grid>{% for product in collection.products %}{% render 'product-card', product: product, demo: is_demo %}{% else %}<div class="catalog-empty"><h3>Esta selección aún no tiene productos</h3><p>Explora otra marca o vuelve al catálogo completo.</p><a class="button" href="{{ routes.all_products_collection_url }}">Ver todo el catálogo</a></div>{% endfor %}</div>
+          <div class="cards catalog-grid" data-catalog-grid>{% for product in collection.products %}{% render 'product-card', product: product, demo: is_demo %}{% else %}<div class="catalog-empty"><h3>Estamos preparando los productos de esta sección</h3><p>Pronto podrás explorarlos aquí. Mientras tanto, conoce nuestras marcas y categorías.</p><a class="button" href="{{ routes.all_products_collection_url }}">Ver todo el catálogo</a></div>{% endfor %}</div>
           {% if paginate.pages > 1 %}<nav class="filter-links catalog-pagination" aria-label="Páginas del catálogo">{{ paginate | default_pagination }}</nav>{% endif %}
         {% endpaginate %}
         {% if is_demo %}<div class="catalog-empty" data-empty hidden><h3>No encontramos productos</h3><p>Prueba con otra búsqueda, marca o categoría.</p><button class="button" type="button" data-filter-clear>Ver todos los productos</button></div>{% endif %}

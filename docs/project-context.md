@@ -1,5 +1,16 @@
 # DECOKASA — decisiones vigentes
 
+## 09/10/2026 — Navegación y operación sencilla en Shopify
+
+Prioridad indicada por el usuario: personal nuevo debe operar desde Shopify con poca capacitación, código robusto y carga rápida. Mantener tema Liquid y herramientas nativas; evitar un catálogo paralelo, aplicaciones adicionales o consultas a Odoo al abrir una página.
+
+Las marcas y categorías son colecciones Shopify reales, disponibles aunque no tengan productos. Los enlaces toman la URL del objeto colección; no dependen de rutas `/types` o `/vendors` vacías. Configuración central: editor del tema > Configuración del tema > Catálogo y navegación > Marcas del catálogo / Categorías de navegación. Selecciona y ordena hasta 12 colecciones por lista; las primeras cuatro categorías aparecen en la barra superior. Sin selección usa las colecciones iniciales disponibles; las eliminadas/no publicadas se omiten. Inicio multimarcas permite elegir la colección de cada tarjeta por separado. No se modifica `settings_data.json` ni se sobrescriben ajustes guardados en Shopify.
+
+Se crearon nueve colecciones vacías (registro en `catalog-collections.json`). Su origen de productos sigue manual/sin condiciones; no presentarlo como automatización activa. Pendiente confirmar cómo Odoo entrega marca y categoría, y configurar condiciones nativas para que el equipo no asigne repetidamente cada producto. Vendor/product_type son candidatos, no un mapeo aprobado. Los filtros nativos conservarán su función cuando estén configurados y existan productos. No se importaron ejemplos.
+
+El cambio añade configuración y renderizado Liquid, sin JavaScript adicional ni solicitudes a Odoo en la carga. 24 productos por página, imágenes adaptables y carga diferida fuera de la principal. No hay medición de rendimiento con catálogo real ni garantía de Core Web Vitals: validar cuando existan productos/fotos y la integración definitiva.
+
+
 Actualizado: 09/10/2026. Este documento prevalece sobre las propuestas históricas de `planning/`.
 
 ## Confirmado por el usuario

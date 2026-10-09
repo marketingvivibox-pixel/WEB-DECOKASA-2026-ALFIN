@@ -6,5 +6,27 @@
     "theme_author": "DECOKASA",
     "theme_documentation_url": "https://shopify.dev/docs/storefronts/themes/architecture",
     "theme_support_url": "https://github.com/marketingvivibox-pixel/WEB-DECOKASA-2026-ALFIN"
+  },
+  {
+    "name": "Catálogo y navegación",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Selecciona y ordena las colecciones que aparecerán como marcas y categorías. Sin selección se usan las colecciones iniciales disponibles. Los productos se administran en Productos > Colecciones."
+      },
+      {
+        "type": "collection_list",
+        "id": "catalog_brands",
+        "label": "Marcas del catálogo",
+        "limit": 12
+      },
+      {
+        "type": "collection_list",
+        "id": "catalog_categories",
+        "label": "Categorías de navegación",
+        "limit": 12,
+        "info": "Las primeras cuatro aparecen en la barra superior. Todas aparecen en el menú de categorías y en el catálogo."
+      }
+    ]
   }
 ]

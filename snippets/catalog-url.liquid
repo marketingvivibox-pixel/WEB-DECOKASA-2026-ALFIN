@@ -1,0 +1,2 @@
+{%- assign destination = selected_collection | default: collections[default_handle] -%}
+{{- destination.url | default: routes.all_products_collection_url -}}

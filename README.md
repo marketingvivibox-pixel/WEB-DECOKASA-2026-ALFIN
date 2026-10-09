@@ -1,6 +1,6 @@
 # DECOKASA · tema Shopify 0.1.0
 
-Tema Shopify 0.1.0 en construcción, conectado a GitHub/main y activo en Shopify. Tienda protegida por contraseña, verificada el 06/10/2026. Sin receptor de formularios ni sincronización de stock: el formulario está deliberadamente en modo simulación.
+Tema Shopify 0.1.0 en construcción, conectado a GitHub/main y activo en Shopify. Acceso público verificado el 09/10/2026. Sin receptor de formularios ni sincronización de stock: el formulario está deliberadamente en modo simulación.
 
 ## Recorrido
 Inicio → catálogo por marca o tipo → landing con ficha completa → formulario → asesor (integración pendiente). Sin pasarelas ni checkout. No emitir `purchase` desde el navegador.
@@ -21,7 +21,7 @@ Asignar SKU único por variante, unidad/almacén y mapeo Odoo tras validación. 
 El formulario solo simula y no persiste datos personales. Consentimiento de seguimiento de prueba en sessionStorage; rechazar elimina atribución e identificador de visitante. Referencia de solicitud necesaria separada de analítica. UTMs deben contener nombres de campaña sin datos personales. Primer/último origen se conserva en navegación directa durante la sesión si se autoriza; no hay atribución entre sesiones todavía. GA4 y Meta/TikTok pendientes. No hay enlace al CRM activo.
 
 ## Verificación
-`npm test` aprueba seis pruebas de lógica y una suite DOM simulada (filtros, variantes, formulario, consentimiento). Shopify Theme Check sin errores ni advertencias; siete HTML y ZIP verificados. Portada renderizada y revisada directamente en Shopify, en escritorio y celular, sin desbordamiento horizontal de página. Reintentos conservan referencia solo en la página actual. Pendiente: catálogo/variantes reales, validación nativa de formularios y recepción idempotente en Odoo antes del lanzamiento comercial.
+`npm test` aprueba trece pruebas, entre lógica, navegación real Liquid y una suite DOM simulada (filtros, variantes, formulario, consentimiento). Shopify Theme Check sin errores ni advertencias; siete HTML y ZIP verificados. Portada renderizada y revisada directamente en Shopify, en escritorio y celular, sin desbordamiento horizontal de página. Reintentos conservan referencia solo en la página actual. Pendiente: catálogo/variantes reales, validación nativa de formularios y recepción idempotente en Odoo antes del lanzamiento comercial.
 
 ## Diseño según el mockup original
 
@@ -39,11 +39,11 @@ La franja superior de servicios permanece fija al desplazarse. La portada incluy
 - [Referencia visual inicial](docs/references/mockup-inicial-decokasa-2026-10-02.jpeg).
 - [Demostración navegable](preview/DECOKASA-inicio.html): descargar el repositorio y abrir este HTML en el navegador; GitHub muestra su código.
 - [Vista móvil de la portada](preview/DECOKASA-movil.html): abrir este HTML en el navegador para verla dentro de un marco de teléfono. Para la tienda conectada, usar la vista móvil del editor de temas Shopify.
-- [Paquete del tema](releases/DECOKASA-tema-0.1.0.zip): contiene solo los 38 archivos Shopify. GitHub/main ya sincroniza el tema activo.
+- [Paquete del tema](releases/DECOKASA-tema-0.1.0.zip): contiene solo los 39 archivos Shopify. GitHub/main ya sincroniza el tema activo.
 
 ## Reproducir las verificaciones
 
-Con Node.js 20 o superior: `npm ci` y `npm test`. Incluye seis pruebas de lógica y la prueba DOM simulada; esta última no comprueba presentación visual ni validación nativa de formularios.
+Con Node.js 20 o superior: `npm ci` y `npm test`. Incluye pruebas de lógica, seis pruebas de navegación Liquid y la prueba DOM simulada; esta última no comprueba presentación visual ni validación nativa de formularios.
 
 Con Python 3: `python scripts/verify_store.py` revisa las siete páginas, enlaces, anclas, IDs, JSON y esquemas de secciones y regenera el ZIP del tema a partir del código actual.
 
@@ -54,3 +54,11 @@ Shopify Theme Check: `npx @shopify/cli theme check --path . --output json`. La h
 ## Catálogo — 09/10/2026
 
 Estructura visual publicada en el tema activo conectado a GitHub/main mientras llegan los productos de Odoo. [Catálogo en Shopify](https://ruik4d-dn.myshopify.com/collections/all), verificado en escritorio y celular; colección real todavía vacía. Abrir `preview/catalogo.html` para explorar los cinco ejemplos ilustrados, filtros, búsqueda y fichas. Tres columnas en escritorio y dos en celular; precio a consultar. Shopify utiliza sus productos reales: los ejemplos no se importan. Los filtros y la ordenación reales usan Shopify y requieren configuración/pruebas con el catálogo final. El ZIP contiene la misma estructura del tema.
+
+## Administrar marcas y categorías sin código
+
+1. Tienda online > Temas > Editar tema > Configuración del tema > **Catálogo y navegación**: selecciona y ordena las colecciones de marcas y categorías. La misma selección alimenta cabecera y catálogo. Sin selección conserva las colecciones iniciales disponibles.
+2. En **Inicio multimarcas**, cambia fotos y selecciona la colección de destino de cada tarjeta. No es necesario escribir URLs.
+3. **Productos > Colecciones** administra nombres, imágenes y origen de productos. Las nueve colecciones creadas están vacías y todavía sin condiciones automáticas; confirmar los campos de Odoo antes de configurarlas. El registro de IDs y pendientes está en `docs/catalog-collections.json`.
+
+El catálogo usa Liquid, ordenación, filtros y paginación de Shopify. No añade aplicaciones ni llamadas a Odoo al cargar. Rendimiento con productos y fotos reales pendiente de medición.

@@ -1,9 +1,9 @@
 <section class="home-hero" aria-labelledby="home-title"><div class="wrap home-hero-grid"><div class="hero-copy"><h1 id="home-title">{{ section.settings.heading | escape }}<span>{{ section.settings.heading_accent | escape }}</span></h1><div class="actions"><a class="button yellow" href="{{ routes.all_products_collection_url }}">{{ section.settings.primary_label | escape }}{% render 'icon', name: 'arrow' %}</a><a class="button outline" href="{{ routes.all_products_collection_url }}">Ver categorías{% render 'icon', name: 'arrow' %}</a></div><div class="hero-benefits"><div>{% render 'icon', name: 'truck' %}<span>Coordina<br>tu envío</span></div><div>{% render 'icon', name: 'shield' %}<span>Compra<br>con asesor</span></div><div>{% render 'icon', name: 'form' %}<span>Solicita<br>tu producto</span></div><div>{% render 'icon', name: 'headphones' %}<span>Atención<br>personalizada</span></div></div></div><div class="hero-media">{% if section.settings.hero_image != blank %}{{ section.settings.hero_image | image_url: width: 1600 | image_tag: widths: '640, 960, 1600', sizes: '(min-width: 900px) 56vw, 100vw', loading: 'eager', class: 'hero-photo' }}{% else %}{% render 'reference-image', crop: 'hero', loading: 'eager' %}{% endif %}</div></div></section>
 <section class="wrap home-brands" id="marcas" aria-labelledby="brands-title"><h2 id="brands-title">Nuestras marcas</h2><div class="brands visual-brands">
-<a class="brand decokasa brand-visual" href="{{ routes.collections_url }}/vendors?q=DECOKASA"><strong class="sr-only">DECOKASA</strong><span class="sr-only"> · Pisos PVC y SPC, paneles PVC, wall panel, alfombras y artículos para el hogar</span>{% if section.settings.decokasa_image != blank %}{{ section.settings.decokasa_image | image_url: width: 1200 | image_tag: widths: '400, 800, 1200', sizes: '(min-width: 900px) 24vw, (min-width: 600px) 48vw, 100vw', loading: 'lazy', class: 'brand-photo', alt: '' }}{% else %}{% render 'reference-image', crop: 'hogar' %}{% endif %}<span class="brand-go">{% render 'icon', name: 'arrow' %}</span></a>
-<a class="brand xion brand-visual" href="{{ routes.collections_url }}/vendors?q=Xion"><strong class="sr-only">XION</strong><span class="sr-only"> · Tecnología y electrodomésticos</span>{% if section.settings.xion_image != blank %}{{ section.settings.xion_image | image_url: width: 1200 | image_tag: widths: '400, 800, 1200', sizes: '(min-width: 900px) 24vw, (min-width: 600px) 48vw, 100vw', loading: 'lazy', class: 'brand-photo', alt: '' }}{% else %}{% render 'reference-image', crop: 'xion' %}{% endif %}<span class="brand-go">{% render 'icon', name: 'arrow' %}</span></a>
-<a class="brand biflex brand-visual" href="{{ routes.collections_url }}/vendors?q=Biflex"><strong class="sr-only">BIFLEX</strong><span class="sr-only"> · Activa tu día</span>{% if section.settings.biflex_image != blank %}{{ section.settings.biflex_image | image_url: width: 1200 | image_tag: widths: '400, 800, 1200', sizes: '(min-width: 900px) 24vw, (min-width: 600px) 48vw, 100vw', loading: 'lazy', class: 'brand-photo', alt: '' }}{% else %}{% render 'reference-image', crop: 'biflex' %}{% endif %}<span class="brand-go">{% render 'icon', name: 'arrow' %}</span></a>
-<a class="brand baby brand-visual" href="{{ routes.collections_url }}/vendors?q=Mundo%20Baby"><strong class="sr-only">MUNDOBABY</strong><span class="sr-only"> · Para acompañar su crecimiento</span>{% if section.settings.baby_image != blank %}{{ section.settings.baby_image | image_url: width: 1200 | image_tag: widths: '400, 800, 1200', sizes: '(min-width: 900px) 24vw, (min-width: 600px) 48vw, 100vw', loading: 'lazy', class: 'brand-photo', alt: '' }}{% else %}{% render 'reference-image', crop: 'baby' %}{% endif %}<span class="brand-go">{% render 'icon', name: 'arrow' %}</span></a>
+<a class="brand decokasa brand-visual" href="{% render 'catalog-url', routes: routes, collections: collections, selected_collection: section.settings.decokasa_collection, default_handle: 'decokasa' %}"><strong class="sr-only">DECOKASA</strong><span class="sr-only"> · Pisos PVC y SPC, paneles PVC, wall panel, alfombras y artículos para el hogar</span>{% if section.settings.decokasa_image != blank %}{{ section.settings.decokasa_image | image_url: width: 1200 | image_tag: widths: '400, 800, 1200', sizes: '(min-width: 900px) 24vw, (min-width: 600px) 48vw, 100vw', loading: 'lazy', class: 'brand-photo', alt: '' }}{% else %}{% render 'reference-image', crop: 'hogar' %}{% endif %}<span class="brand-go">{% render 'icon', name: 'arrow' %}</span></a>
+<a class="brand xion brand-visual" href="{% render 'catalog-url', routes: routes, collections: collections, selected_collection: section.settings.xion_collection, default_handle: 'xion' %}"><strong class="sr-only">XION</strong><span class="sr-only"> · Tecnología y electrodomésticos</span>{% if section.settings.xion_image != blank %}{{ section.settings.xion_image | image_url: width: 1200 | image_tag: widths: '400, 800, 1200', sizes: '(min-width: 900px) 24vw, (min-width: 600px) 48vw, 100vw', loading: 'lazy', class: 'brand-photo', alt: '' }}{% else %}{% render 'reference-image', crop: 'xion' %}{% endif %}<span class="brand-go">{% render 'icon', name: 'arrow' %}</span></a>
+<a class="brand biflex brand-visual" href="{% render 'catalog-url', routes: routes, collections: collections, selected_collection: section.settings.biflex_collection, default_handle: 'biflex' %}"><strong class="sr-only">BIFLEX</strong><span class="sr-only"> · Activa tu día</span>{% if section.settings.biflex_image != blank %}{{ section.settings.biflex_image | image_url: width: 1200 | image_tag: widths: '400, 800, 1200', sizes: '(min-width: 900px) 24vw, (min-width: 600px) 48vw, 100vw', loading: 'lazy', class: 'brand-photo', alt: '' }}{% else %}{% render 'reference-image', crop: 'biflex' %}{% endif %}<span class="brand-go">{% render 'icon', name: 'arrow' %}</span></a>
+<a class="brand baby brand-visual" href="{% render 'catalog-url', routes: routes, collections: collections, selected_collection: section.settings.baby_collection, default_handle: 'mundo-baby' %}"><strong class="sr-only">MUNDOBABY</strong><span class="sr-only"> · Para acompañar su crecimiento</span>{% if section.settings.baby_image != blank %}{{ section.settings.baby_image | image_url: width: 1200 | image_tag: widths: '400, 800, 1200', sizes: '(min-width: 900px) 24vw, (min-width: 600px) 48vw, 100vw', loading: 'lazy', class: 'brand-photo', alt: '' }}{% else %}{% render 'reference-image', crop: 'baby' %}{% endif %}<span class="brand-go">{% render 'icon', name: 'arrow' %}</span></a>
 </div></section>
 <div class="wrap"><a class="opportunity" href="{{ routes.all_products_collection_url }}"><span class="opportunity-icon">{% render 'icon', name: 'tag' %}</span><span>{{ section.settings.promo_text | escape }}</span><span class="opportunity-go">{% render 'icon', name: 'arrow' %}</span><span class="opportunity-art" aria-hidden="true">{% render 'reference-image', crop: 'promo' %}</span></a></div>
 {% if section.settings.featured_collection != blank %}<section class="wrap section home-featured"><div class="section-head"><h2>Explora el catálogo</h2><a href="{{ routes.all_products_collection_url }}">Ver todos {% render 'icon', name: 'arrow' %}</a></div><div class="cards">{% for product in section.settings.featured_collection.products limit: 3 %}{% render 'product-card', product: product %}{% endfor %}</div></section>{% endif %}
@@ -51,9 +51,21 @@
       "label": "Imagen DECOKASA"
     },
     {
+      "type": "collection",
+      "id": "decokasa_collection",
+      "label": "Colección de DECOKASA",
+      "info": "Destino de esta tarjeta. Sin selección se usa la colección inicial si está disponible."
+    },
+    {
       "type": "image_picker",
       "id": "xion_image",
       "label": "Imagen Xion"
+    },
+    {
+      "type": "collection",
+      "id": "xion_collection",
+      "label": "Colección de Xion",
+      "info": "Destino de esta tarjeta. Sin selección se usa la colección inicial si está disponible."
     },
     {
       "type": "image_picker",
@@ -61,9 +73,21 @@
       "label": "Imagen Biflex"
     },
     {
+      "type": "collection",
+      "id": "biflex_collection",
+      "label": "Colección de Biflex",
+      "info": "Destino de esta tarjeta. Sin selección se usa la colección inicial si está disponible."
+    },
+    {
       "type": "image_picker",
       "id": "baby_image",
       "label": "Imagen Mundo Baby"
+    },
+    {
+      "type": "collection",
+      "id": "baby_collection",
+      "label": "Colección de Mundo Baby",
+      "info": "Destino de esta tarjeta. Sin selección se usa la colección inicial si está disponible."
     },
     {
       "type": "text",

@@ -1,0 +1,79 @@
+{
+  "store": "ruik4d-dn.myshopify.com",
+  "created_on": "2026-10-09",
+  "status": "Empty collections; no automatic conditions configured. Confirm Odoo mapping before enabling rules.",
+  "collections": [
+    {
+      "title": "Tecnología",
+      "id": 512350748909,
+      "handle": "tecnologia",
+      "automatic_conditions_configured": false,
+      "candidate_attribute": "product_type",
+      "candidate_value": "Tecnología"
+    },
+    {
+      "title": "Electrodomésticos",
+      "id": 512350814445,
+      "handle": "electrodomesticos",
+      "automatic_conditions_configured": false,
+      "candidate_attribute": "product_type",
+      "candidate_value": "Electrodomésticos"
+    },
+    {
+      "title": "Bebés",
+      "id": 512350879981,
+      "handle": "bebes",
+      "automatic_conditions_configured": false,
+      "candidate_attribute": "product_type",
+      "candidate_value": "Bebés"
+    },
+    {
+      "title": "Fitness",
+      "id": 512350912749,
+      "handle": "fitness",
+      "automatic_conditions_configured": false,
+      "candidate_attribute": "product_type",
+      "candidate_value": "Fitness"
+    },
+    {
+      "title": "Hogar y acabados",
+      "id": 512350945517,
+      "handle": "hogar-y-acabados",
+      "automatic_conditions_configured": false,
+      "candidate_attribute": "product_type",
+      "candidate_value": "Acabados"
+    },
+    {
+      "title": "DECOKASA",
+      "id": 512350978285,
+      "handle": "decokasa",
+      "automatic_conditions_configured": false,
+      "candidate_attribute": "vendor",
+      "candidate_value": "DECOKASA"
+    },
+    {
+      "title": "Xion",
+      "id": 512351011053,
+      "handle": "xion",
+      "automatic_conditions_configured": false,
+      "candidate_attribute": "vendor",
+      "candidate_value": "Xion"
+    },
+    {
+      "title": "Biflex",
+      "id": 512351043821,
+      "handle": "biflex",
+      "automatic_conditions_configured": false,
+      "candidate_attribute": "vendor",
+      "candidate_value": "Biflex"
+    },
+    {
+      "title": "Mundo Baby",
+      "id": 512351076589,
+      "handle": "mundo-baby",
+      "automatic_conditions_configured": false,
+      "candidate_attribute": "vendor",
+      "candidate_value": "Mundo Baby"
+    }
+  ]
+}

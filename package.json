@@ -2,9 +2,9 @@
   "name": "decokasa-storefront",
   "version": "0.1.0",
   "private": true,
-  "description": "Tema Shopify y demostración DECOKASA; integraciones pendientes.",
+  "description": "Tema Shopify y demostraciÃ³n DECOKASA; integraciones pendientes.",
   "scripts": {
-    "test": "node --test tests/store.test.cjs tests/ui.test.cjs"
+    "test": "node --test tests/store.test.cjs tests/ui.test.cjs tests/catalog.test.cjs"
   },
   "devDependencies": {
     "linkedom": "0.18.13",

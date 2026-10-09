@@ -1,0 +1,47 @@
+{
+  "decokasa": {
+    "handle": "decokasa",
+    "title": "DECOKASA",
+    "url": "/collections/decokasa"
+  },
+  "xion": {
+    "handle": "xion",
+    "title": "Xion",
+    "url": "/collections/xion"
+  },
+  "biflex": {
+    "handle": "biflex",
+    "title": "Biflex",
+    "url": "/collections/biflex"
+  },
+  "mundo-baby": {
+    "handle": "mundo-baby",
+    "title": "Mundo Baby",
+    "url": "/collections/mundo-baby"
+  },
+  "tecnologia": {
+    "handle": "tecnologia",
+    "title": "Tecnología",
+    "url": "/collections/tecnologia"
+  },
+  "electrodomesticos": {
+    "handle": "electrodomesticos",
+    "title": "Electrodomésticos",
+    "url": "/collections/electrodomesticos"
+  },
+  "bebes": {
+    "handle": "bebes",
+    "title": "Bebés",
+    "url": "/collections/bebes"
+  },
+  "fitness": {
+    "handle": "fitness",
+    "title": "Fitness",
+    "url": "/collections/fitness"
+  },
+  "hogar-y-acabados": {
+    "handle": "hogar-y-acabados",
+    "title": "Hogar y acabados",
+    "url": "/collections/hogar-y-acabados"
+  }
+}

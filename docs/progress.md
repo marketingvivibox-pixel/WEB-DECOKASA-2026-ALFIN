@@ -1,5 +1,14 @@
 # Avances y validación
 
+## 09/10/2026 — Corrección de categorías y marcas, configuración nativa
+
+- Causa: rutas dinámicas de tipo/proveedor y listas derivadas de productos quedaban vacías en una tienda sin productos. Se crearon nueve colecciones vacías y el tema usa sus objetos y enlaces nativos.
+- Marcas visibles sin productos; navegación por cinco categorías, selección activa y ordenación que conserva la colección. El estado vacío indica que los productos están en preparación.
+- Listas de marcas/categorías seleccionables y ordenables en Configuración del tema > Catálogo y navegación. Cada tarjeta de Inicio tiene selector de colección. Se preservan los ajustes existentes de Shopify; no se introduce configuración global guardada desde el repositorio.
+- Validación local: 13 pruebas aprobadas, incluidas selección del editor, colecciones no disponibles y catálogo sin productos; Theme Check sin advertencias/errores; siete vistas y ZIP de 39 archivos válidos.
+- Pendientes: verificar sincronización pública tras publicación, configuración automática según campos reales de Odoo, filtros/productos reales y rendimiento con imágenes finales. No se han activado condiciones automáticas, importado productos, instalado aplicaciones ni conectado Odoo.
+
+
 ## 09/10/2026 — Estructura visual del catálogo publicada en Shopify
 
 - Se preparó la sección de catálogo con introducción, navegación por marcas, filtros, ordenación, tarjetas con acceso a la landing única y bloque de ayuda del asesor. Conserva amarillo/negro/blanco; tres columnas en escritorio y dos en móvil, con filtros plegables. Título y descripción editables en Shopify.
