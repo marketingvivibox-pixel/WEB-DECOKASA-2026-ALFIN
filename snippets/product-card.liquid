@@ -1,1 +1,9 @@
-<article class="card"><a href="{{ product.metafields.decokasa.landing_url.value | default: product.url }}" aria-label="{{ product.title | escape }}">{% if product.featured_image %}{{ product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '350, 700', sizes: '(min-width: 900px) 33vw, 100vw', class: 'art' }}{% else %}{% render 'demo-art' %}{% endif %}</a><div class="card-body"><span class="tag">{{ product.vendor | escape }}</span><h3>{{ product.title | escape }}</h3><p>Importe y disponibilidad por confirmar con asesor.</p><a class="button outline" href="{{ product.metafields.decokasa.landing_url.value | default: product.url }}">Ver producto →</a></div></article>
+{% assign landing_url = product.metafields.decokasa.landing_url.value | default: product.url %}
+<article class="card catalog-card"{% if demo %} data-card data-brand="{{ product.vendor | escape }}" data-category="{{ product.type | escape }}" data-title="{{ product.title | escape }}"{% endif %}>
+  <a class="catalog-card-media" href="{{ landing_url }}" aria-label="Ver {{ product.title | escape }}">
+    {% if demo %}{% render 'catalog-art', handle: product.handle %}<span class="catalog-sample">Ilustración de muestra</span>
+    {% elsif product.featured_image %}{{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '200, 400, 600, 800', sizes: '(min-width: 1200px) 25vw, (min-width: 900px) 33vw, 50vw', class: 'catalog-product-photo' }}
+    {% else %}<div class="catalog-image-pending">{% render 'icon', name: 'box' %}<span>Imagen pendiente</span></div>{% endif %}
+  </a>
+  <div class="card-body"><span class="tag">{{ product.vendor | escape }}</span><p class="catalog-card-category">{{ product.type | escape }}</p><h3><a href="{{ landing_url }}">{{ product.title | escape }}</a></h3><p class="catalog-card-price">Precio a consultar</p><a class="button outline" href="{{ landing_url }}">Ver producto {% render 'icon', name: 'arrow' %}</a></div>
+</article>

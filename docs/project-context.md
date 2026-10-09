@@ -1,6 +1,6 @@
 # DECOKASA — decisiones vigentes
 
-Actualizado: 07/10/2026. Este documento prevalece sobre las propuestas históricas de `planning/`.
+Actualizado: 09/10/2026. Este documento prevalece sobre las propuestas históricas de `planning/`.
 
 ## Confirmado por el usuario
 
@@ -23,6 +23,10 @@ Actualizado: 07/10/2026. Este documento prevalece sobre las propuestas históric
 Inicio → catálogo por marca/categoría → landing con ficha → formulario de solicitud → atención del asesor → venta confirmada/cerrada en Odoo.
 
 El tema contiene portada, catálogo, búsqueda, landing de producto, landing PVC, página informativa y 404. En Shopify las landings estándar usan `/products/<handle>`; PVC propone `/pages/pisos-pvc`. La carga de productos y asignación de páginas sigue pendiente. El catálogo debe apuntar a una sola landing por producto; `decokasa.landing_url` permite enlazar una página interna. Las vistas HTML en `preview/` representan el recorrido y usan datos ficticios.
+
+## Catálogo visual autorizado para publicación
+
+La estructura visual del catálogo se adelantó por petición del usuario el 09/10/2026 mientras se espera Odoo. Presenta navegación por marca, filtros laterales/plegables, tres columnas en escritorio y dos en móvil, tarjetas hacia fichas y ayuda del asesor. La muestra usa ilustraciones explícitas y «Precio a consultar». El tema utiliza imágenes/productos Shopify y filtros nativos por marca y tipo; configuración en la tienda y validación con datos reales pendientes. El usuario autorizó publicar la estructura en el tema activo mediante GitHub/main el 09/10/2026. Los productos ficticios permanecen solo en la muestra; no se importan a la tienda.
 
 ## Trazabilidad y CRM propuestos
 

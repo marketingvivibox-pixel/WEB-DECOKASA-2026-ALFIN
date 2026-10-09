@@ -31,7 +31,28 @@
     showConsent();
     document.querySelectorAll('[data-consent]').forEach(button=>button.addEventListener('click',()=>{consent=button.dataset.consent;set('decokasa.consent',consent);set('decokasa.consent_date',new Date().toISOString());if(consent==='accepted')capture();else{attribution=null;remove('decokasa.attribution');remove('decokasa.visitor');}showConsent();}));
     const brand=document.querySelector('[data-filter-brand]'),category=document.querySelector('[data-filter-category]'),query=document.querySelector('[data-filter-query]');
-    if(brand){const p=new URLSearchParams(root.location.search);brand.value=p.get('marca')||'';category.value=p.get('categoria')||'';query.value=p.get('q')||'';function filter(){let count=0;document.querySelectorAll('[data-card]').forEach(card=>{const match=(!brand.value||card.dataset.brand===brand.value)&&(!category.value||card.dataset.category===category.value)&&card.textContent.toLocaleLowerCase('es').includes(query.value.toLocaleLowerCase('es').trim());card.hidden=!match;if(match)count++;});document.querySelector('[data-count]').textContent=`${count} productos de muestra`;document.querySelector('[data-empty]').hidden=count>0;}[brand,category,query].forEach(input=>input.addEventListener('input',filter));filter();}
+    const filters=document.querySelector('[data-catalog-filters]');
+    if(filters && typeof root.matchMedia==='function')filters.open=!root.matchMedia('(max-width: 899px)').matches;
+    document.querySelector('[data-catalog-native-sort]')?.addEventListener('change',()=>document.getElementById('CatalogFilters')?.requestSubmit());
+    if(brand){
+      const p=new URLSearchParams(root.location.search),cards=[...document.querySelectorAll('[data-card]')],grid=document.querySelector('[data-catalog-grid]'),sort=document.querySelector('[data-catalog-sort]');
+      const choices=[...document.querySelectorAll('[data-brand-choice]')];
+      brand.value=p.get('marca')||'';category.value=p.get('categoria')||'';query.value=p.get('q')||'';
+      const normalize=text=>text.toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+      function filter(){
+        let count=0;
+        cards.forEach(card=>{const match=(!brand.value||card.dataset.brand===brand.value)&&(!category.value||card.dataset.category===category.value)&&normalize(card.textContent).includes(normalize(query.value.trim()));card.hidden=!match;if(match)count++;});
+        document.querySelector('[data-count]').textContent=`${count} ${count===1?'producto':'productos'} de muestra`;
+        document.querySelector('[data-empty]').hidden=count>0;
+        choices.forEach(link=>{const active=link.dataset.brandChoice===brand.value;link.classList.toggle('is-selected',active);if(active)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});
+        if(sort&&grid){const ordered=[...cards];if(sort.value!=='manual')ordered.sort((a,b)=>a.dataset.title.localeCompare(b.dataset.title,'es')*(sort.value==='title-descending'?-1:1));ordered.forEach(card=>grid.appendChild(card));}
+      }
+      [brand,category,query].forEach(input=>input.addEventListener('input',filter));
+      sort?.addEventListener('change',filter);
+      choices.forEach(link=>link.addEventListener('click',event=>{event.preventDefault();brand.value=link.dataset.brandChoice;category.value='';query.value='';filter();}));
+      document.querySelectorAll('[data-filter-clear]').forEach(button=>button.addEventListener('click',()=>{brand.value='';category.value='';query.value='';filter();}));
+      filter();
+    }
     document.querySelectorAll('[data-request-form]').forEach(form=>{
       form.querySelector('[data-enable-form]').disabled=false;
       const select=form.querySelector('[name=variant_id]'),qty=form.querySelector('[name=quantity]'),price=document.querySelector('[data-product-price]'),sku=document.querySelector('[data-sku]');

@@ -28,6 +28,12 @@ const visible=()=>[...catalog.document.querySelectorAll('[data-card]')].filter(e
 assert.equal(visible().length,2);
 const brand=catalog.document.querySelector('[data-filter-brand]');brand.value='Biflex';catalog.event(brand,'input');assert.equal(visible().length,1);
 const category=catalog.document.querySelector('[data-filter-category]');category.value='Bebés';catalog.event(category,'input');assert.equal(visible().length,0);assert.equal(catalog.document.querySelector('[data-empty]').hidden,false);
+catalog.event(catalog.document.querySelector('[data-empty] [data-filter-clear]'),'click');assert.equal(visible().length,5);
+const query=catalog.document.querySelector('[data-filter-query]');query.value='audifonos';catalog.event(query,'input');assert.equal(visible().length,1);assert.match(visible()[0].dataset.title,/Audífonos/);
+catalog.event(catalog.document.querySelector('[data-brand-choice="Biflex"]'),'click');assert.equal(query.value,'');assert.equal(visible().length,1);assert.equal(catalog.document.querySelector('[data-brand-choice="Biflex"]').getAttribute('aria-current'),'page');
+catalog.event(catalog.document.querySelector('[data-filter-clear]'),'click');
+const sort=catalog.document.querySelector('[data-catalog-sort]');sort.value='title-descending';catalog.event(sort,'change');assert.equal(catalog.document.querySelector('[data-catalog-grid] [data-card]').dataset.brand,'Mundo Baby');
+sort.value='manual';catalog.event(sort,'change');assert.match(catalog.document.querySelector('[data-catalog-grid] [data-card]').dataset.title,/Audífonos/);
 const pvc=load('landing-pisos-pvc.html','?utm_source=meta&ad_id=123');
 const $=s=>pvc.document.querySelector(s),area=$('[name=area]'),quantity=$('[name=quantity]');
 assert.equal($('fieldset').disabled,false);

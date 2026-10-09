@@ -1,4 +1,71 @@
-<section class="wrap section"><p class="eyebrow">Encuentra lo que necesitas</p><h1>{{ collection.title | escape }}</h1><h2>Explorar por marca</h2><div class="filter-links">{% for vendor in shop.vendors %}{{ vendor | link_to_vendor }}{% endfor %}</div><h2>Explorar por categoría</h2><div class="filter-links">{% for type in shop.types %}{% if type != blank %}{{ type | link_to_type }}{% endif %}{% endfor %}</div>{% paginate collection.products by 24 %}<p>{{ collection.products_count }} productos</p><div class="cards">{% for product in collection.products %}{% render 'product-card', product: product %}{% else %}<p class="note">Esta selección todavía no contiene productos.</p>{% endfor %}</div><div class="filter-links">{{ paginate | default_pagination }}</div>{% endpaginate %}</section>
+{% assign is_demo = false %}
+<section class="catalog-page">
+  <div class="wrap">
+    <nav class="breadcrumb catalog-breadcrumb" aria-label="Ruta de navegación"><a href="{{ routes.root_url }}">Inicio</a><span aria-hidden="true">/</span><span>Catálogo</span></nav>
+    {% if is_demo %}<p class="catalog-demo-note">Vista de muestra · Productos e ilustraciones de ejemplo.</p>{% endif %}
+    <div class="catalog-intro">
+      <div><p class="eyebrow">Cuatro marcas, un solo lugar</p><h1>{{ section.settings.heading | escape }}</h1><p>{{ section.settings.description | escape }}</p></div>
+      <div class="catalog-intro-note">{% render 'icon', name: 'headphones' %}<div><strong>Elige con ayuda de un asesor</strong><span>Consulta el precio, la disponibilidad y la entrega.</span></div></div>
+    </div>
+    <nav class="catalog-brands" aria-label="Explorar marcas">
+      {% assign all_brands_selected = false %}{% if is_demo %}{% assign all_brands_selected = true %}{% elsif collection.handle == 'all' and collection.current_vendor == blank and collection.current_type == blank %}{% assign all_brands_selected = true %}{% endif %}
+      <a class="catalog-brand-all{% if all_brands_selected %} is-selected{% endif %}" href="{{ routes.all_products_collection_url }}" {% if is_demo %}data-brand-choice=""{% endif %}{% if all_brands_selected %} aria-current="page"{% endif %}>Todas las marcas</a>
+      {% for vendor in shop.vendors %}<a{% if collection.current_vendor == vendor %} class="is-selected" aria-current="page"{% endif %} href="{{ vendor | url_for_vendor }}" {% if is_demo %}data-brand-choice="{{ vendor | escape }}"{% endif %}><span class="brand-dot brand-dot-{{ vendor | handleize }}" aria-hidden="true"></span>{{ vendor | escape }}</a>{% endfor %}
+    </nav>
+    <div class="catalog-layout">
+      <aside class="catalog-sidebar" aria-label="Filtros del catálogo">
+        <details class="catalog-filters" data-catalog-filters open>
+          <summary>{% render 'icon', name: 'filter' %}<span>Filtrar productos</span>{% render 'icon', name: 'arrow' %}</summary>
+          <div class="catalog-filter-body">
+            {% if is_demo %}
+              <label>Marca<select data-filter-brand><option value="">Todas las marcas</option>{% for vendor in shop.vendors %}<option>{{ vendor | escape }}</option>{% endfor %}</select></label>
+              <label>Categoría<select data-filter-category><option value="">Todas las categorías</option>{% for type in shop.types %}<option>{{ type | escape }}</option>{% endfor %}</select></label>
+              <button class="catalog-clear" type="button" data-filter-clear>Limpiar filtros</button>
+            {% else %}
+              <form id="CatalogFilters" action="{{ collection.url }}" method="get">
+                {% assign has_catalog_filters = false %}
+                {% for filter in collection.filters %}
+                  {% if filter.param_name == 'filter.p.vendor' or filter.param_name == 'filter.p.product_type' %}
+                    {% assign has_catalog_filters = true %}
+                    <fieldset class="catalog-facet"><legend>{% if filter.param_name == 'filter.p.vendor' %}Marca{% else %}Categoría{% endif %}</legend>
+                      {% for value in filter.values %}<label class="catalog-check"><input type="checkbox" name="{{ value.param_name | escape }}" value="{{ value.value | escape }}"{% if value.active %} checked{% endif %}{% if value.count == 0 and value.active == false %} disabled{% endif %}><span>{{ value.label | escape }}</span><small>{{ value.count }}</small></label>{% endfor %}
+                    </fieldset>
+                  {% endif %}
+                {% endfor %}
+                {% unless has_catalog_filters %}
+                  <h2 class="catalog-filter-heading">Marca</h2><div class="catalog-route-links">{% for vendor in shop.vendors %}{{ vendor | link_to_vendor }}{% endfor %}</div>
+                  <h2 class="catalog-filter-heading">Categoría</h2><div class="catalog-route-links">{% for type in shop.types %}{% if type != blank %}{{ type | link_to_type }}{% endif %}{% endfor %}</div>
+                {% endunless %}
+                <button class="button" type="submit">Aplicar selección</button>
+                <a class="catalog-clear" href="{{ collection.url }}">Limpiar filtros</a>
+              </form>
+            {% endif %}
+          </div>
+        </details>
+        <div class="catalog-sidebar-note">{% render 'icon', name: 'form' %}<strong>¿Cómo elijo mi producto?</strong><p>Abre su ficha, revisa los detalles y solicita atención.</p></div>
+      </aside>
+      <div class="catalog-results">
+        {% if is_demo %}<label class="catalog-search">{% render 'icon', name: 'search' %}<span class="sr-only">Buscar en el catálogo</span><input data-filter-query type="search" placeholder="¿Qué estás buscando?" autocomplete="off"></label>{% endif %}
+        <div class="catalog-toolbar">
+          <div><h2>{% if is_demo or collection.handle == 'all' %}Todos los productos{% else %}{{ collection.title | escape }}{% endif %}</h2><p {% if is_demo %}data-count role="status" aria-atomic="true"{% endif %}>{{ collection.products_count }} productos{% if is_demo %} de muestra{% endif %}</p></div>
+          <label class="catalog-sort">Ordenar por<select {% if is_demo %}data-catalog-sort{% else %}data-catalog-native-sort name="sort_by" form="CatalogFilters"{% endif %}>
+            {% assign selected_sort = collection.sort_by | default: collection.default_sort_by %}
+            {% unless is_demo %}{% if selected_sort != blank and selected_sort != 'manual' and selected_sort != 'title-ascending' and selected_sort != 'title-descending' and selected_sort != 'created-descending' %}<option value="{{ selected_sort | escape }}" selected>Orden de la colección</option>{% endif %}{% endunless %}
+            <option value="manual"{% if selected_sort == 'manual' %} selected{% endif %}>Destacados</option><option value="title-ascending"{% if selected_sort == 'title-ascending' %} selected{% endif %}>Nombre: A–Z</option><option value="title-descending"{% if selected_sort == 'title-descending' %} selected{% endif %}>Nombre: Z–A</option>{% unless is_demo %}<option value="created-descending"{% if selected_sort == 'created-descending' %} selected{% endif %}>Más recientes</option>{% endunless %}
+          </select></label>
+          {% unless is_demo %}<noscript><button class="button" type="submit" form="CatalogFilters">Ordenar</button></noscript>{% endunless %}
+        </div>
+        {% unless is_demo %}<div class="catalog-active-filters">{% for filter in collection.filters %}{% for value in filter.active_values %}<a href="{{ value.url_to_remove }}" aria-label="Quitar filtro {{ value.label | escape }}">{{ value.label | escape }} <span aria-hidden="true">×</span></a>{% endfor %}{% endfor %}</div>{% endunless %}
+        {% paginate collection.products by 24 %}
+          <div class="cards catalog-grid" data-catalog-grid>{% for product in collection.products %}{% render 'product-card', product: product, demo: is_demo %}{% else %}<div class="catalog-empty"><h3>Esta selección aún no tiene productos</h3><p>Explora otra marca o vuelve al catálogo completo.</p><a class="button" href="{{ routes.all_products_collection_url }}">Ver todo el catálogo</a></div>{% endfor %}</div>
+          {% if paginate.pages > 1 %}<nav class="filter-links catalog-pagination" aria-label="Páginas del catálogo">{{ paginate | default_pagination }}</nav>{% endif %}
+        {% endpaginate %}
+        {% if is_demo %}<div class="catalog-empty" data-empty hidden><h3>No encontramos productos</h3><p>Prueba con otra búsqueda, marca o categoría.</p><button class="button" type="button" data-filter-clear>Ver todos los productos</button></div>{% endif %}
+        <div class="catalog-help"><div>{% render 'icon', name: 'headphones' %}<div><strong>¿Necesitas ayuda para elegir?</strong><p>Un asesor te orienta antes de confirmar tu compra.</p></div></div><a class="button outline" href="https://wa.me/51941599516?text=Hola%2C%20estoy%20viendo%20el%20cat%C3%A1logo%20DECOKASA%20y%20quisiera%20ayuda%20para%20elegir%20un%20producto.">Consultar con un asesor {% render 'icon', name: 'arrow' %}</a></div>
+      </div>
+    </div>
+  </div>
+</section>
 {% schema %}
-{"name": "Catálogo", "settings": [], "presets": [{"name": "Catálogo"}]}
+{"name":"Catálogo","settings":[{"type":"text","id":"heading","label":"Título","default":"Encuentra algo para ti."},{"type":"textarea","id":"description","label":"Descripción","default":"Ideas para tu hogar, tecnología para tu día a día y mucho más. Explora nuestras marcas y elige tu próximo favorito."}],"presets":[{"name":"Catálogo"}]}
 {% endschema %}

@@ -7,7 +7,7 @@ Inicio → catálogo por marca o tipo → landing con ficha completa → formula
 
 ## Archivos
 - `templates/index.json`: portada multimarcas editable; imagen principal y colección destacada.
-- `templates/collection.json`: catálogo; enlaces nativos por vendor/type y paginación.
+- `templates/collection.json`: catálogo adaptable con marcas, filtros nativos vendor/type cuando estén configurados, ordenación, tarjetas y paginación.
 - `templates/product.json`: cada URL `/products/<handle>` es una landing que incluye ficha y formulario.
 - `templates/page.pvc.json` + `sections/pvc-landing.liquid`: página interna PVC con selector de producto. Crear la página `pisos-pvc` y asignar plantilla cuando se trabaje en Shopify.
 - `assets/decokasa.css` / `.js`: estilos compartidos, calculadora y simulación; no bibliotecas ni servicios externos.
@@ -39,7 +39,7 @@ La franja superior de servicios permanece fija al desplazarse. La portada incluy
 - [Referencia visual inicial](docs/references/mockup-inicial-decokasa-2026-10-02.jpeg).
 - [Demostración navegable](preview/DECOKASA-inicio.html): descargar el repositorio y abrir este HTML en el navegador; GitHub muestra su código.
 - [Vista móvil de la portada](preview/DECOKASA-movil.html): abrir este HTML en el navegador para verla dentro de un marco de teléfono. Para la tienda conectada, usar la vista móvil del editor de temas Shopify.
-- [Paquete del tema](releases/DECOKASA-tema-0.1.0.zip): contiene solo los 37 archivos Shopify. GitHub/main ya sincroniza el tema activo.
+- [Paquete del tema](releases/DECOKASA-tema-0.1.0.zip): contiene solo los 38 archivos Shopify. GitHub/main ya sincroniza el tema activo.
 
 ## Reproducir las verificaciones
 
@@ -47,6 +47,10 @@ Con Node.js 20 o superior: `npm ci` y `npm test`. Incluye seis pruebas de lógic
 
 Con Python 3: `python scripts/verify_store.py` revisa las siete páginas, enlaces, anclas, IDs, JSON y esquemas de secciones y regenera el ZIP del tema a partir del código actual.
 
-Después de cambiar portada/cabecera/estilos: `node scripts/sync_preview.cjs` regenera las vistas locales desde las secciones Liquid y copia los recursos; luego ejecutar el verificador y las pruebas. La demostración conserva su catálogo ficticio.
+Después de cambiar portada/cabecera/catálogo/estilos: `node scripts/sync_preview.cjs` regenera las vistas locales desde las secciones Liquid y copia los recursos; luego ejecutar el verificador y las pruebas. La demostración conserva su catálogo ficticio.
 
 Shopify Theme Check: `npx @shopify/cli theme check --path . --output json`. La herramienta no requiere conexión a la tienda para esta revisión estática. `.shopifyignore` excluye documentos, pruebas, vistas y herramientas del tema.
+
+## Catálogo — 09/10/2026
+
+Estructura visual autorizada para publicación en el tema activo conectado a GitHub/main mientras llegan los productos de Odoo. Abrir `preview/catalogo.html` para explorar los cinco ejemplos ilustrados, filtros, búsqueda y fichas. Tres columnas en escritorio y dos en celular; precio a consultar. Shopify utiliza sus productos reales: los ejemplos no se importan. Los filtros y la ordenación reales usan Shopify y requieren configuración/pruebas con el catálogo final. El ZIP contiene la misma estructura del tema.
