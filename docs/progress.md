@@ -1,12 +1,13 @@
 # Avances y validación
 
-## 09/10/2026 — Estructura visual del catálogo, publicación autorizada
+## 09/10/2026 — Estructura visual del catálogo publicada en Shopify
 
 - Se preparó la sección de catálogo con introducción, navegación por marcas, filtros, ordenación, tarjetas con acceso a la landing única y bloque de ayuda del asesor. Conserva amarillo/negro/blanco; tres columnas en escritorio y dos en móvil, con filtros plegables. Título y descripción editables en Shopify.
 - La vista navegable usa cinco productos ficticios e ilustraciones marcadas como muestra. Permite buscar sin distinguir acentos, combinar marca/categoría, ordenar por nombre y limpiar una selección vacía. Las tarjetas muestran «Precio a consultar», sin inventar disponibilidad ni importar productos de Odoo.
 - El tema utiliza productos y fotos de la colección Shopify, paginación de 24 y filtros nativos vendor/product_type si están configurados; ofrece enlaces por marca/tipo como alternativa. Los filtros nativos deben habilitarse y probarse en la tienda cuando exista el catálogo real. La búsqueda de la muestra es local; la búsqueda real usa el buscador global de Shopify.
 - Siete pruebas Node aprobadas, ampliada la suite DOM del catálogo; siete HTML/enlaces/IDs/JSON/esquemas válidos; ZIP regenerado con 38 archivos; Theme Check sin errores ni advertencias. Comprobación visual en navegador a 1440, 768, 844, 390 y 375 px sin desbordamiento horizontal; comprobados filtros, búsqueda, orden, fichas, movimiento reducido y texto del catálogo al 200%.
-- El usuario autorizó publicar esta estructura el 09/10/2026. Se registra en GitHub/main para sincronizar el tema activo conectado a Shopify; la comprobación de despliegue se documentará al finalizar. Los ejemplos ilustrados permanecen solo en la muestra local; Shopify utiliza su colección real. Pendientes: productos/fotos reales, autoridad de precios y configuración de filtros. Odoo, formularios y medición continúan pendientes.
+- El usuario autorizó publicar esta estructura el 09/10/2026. Commit `98ddff4` enviado a GitHub/main, hash remoto confirmado. Catálogo comprobado en el tema activo Shopify `188927803629`: acceso público HTTP 200 sin autenticación, introducción/estilos actualizados, colección real vacía y cero tarjetas de muestra. Revisión visual de escritorio y móvil 390 px sin desbordamiento; filtros plegados en móvil y ordenación nativa Z–A conserva `sort_by=title-descending`. Captura de publicación guardada en outputs del chat.
+- El administrador muestra visibilidad Público y el tema conectado a GitHub/main; no se cambió la visibilidad durante esta tarea. Los ejemplos ilustrados permanecen solo en la muestra local. Pendientes: productos/fotos reales, autoridad de precios y configuración de filtros con productos. Odoo, formularios y medición continúan pendientes.
 
 ## 07/10/2026 — Franja superior visible en todo el recorrido
 
