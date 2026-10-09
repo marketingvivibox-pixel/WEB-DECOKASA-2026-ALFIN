@@ -1,5 +1,13 @@
 # DECOKASA — decisiones vigentes
 
+## 09/10/2026 — Ficha de producto nativa basada en la referencia
+
+Ficha predeterminada implementada con galería y miniaturas, datos a dos columnas en escritorio y una en móvil, precio/comparación real de la variante, opciones nativas, cantidad y solicitud al asesor. Título, proveedor, fotos, descripción, variantes, SKU y precios se administran en Productos; formato de imagen, visibilidad de datos, textos y hasta seis bloques informativos se ajustan en Productos > Producto predeterminado > Ficha de producto dentro del editor del tema. No se sobrescriben los ajustes guardados de Shopify.
+
+La selección de opciones usa los IDs nativos y la respuesta de sección de Shopify para actualizar la ficha, con navegación normal ante fallos. No carga todas las variantes como JSON ni depende de consultas a Odoo durante la visita. Conserva los datos escritos en memoria, sin poner contactos en URLs o almacenamiento. Los recursos propios de la ficha se cargan donde se utiliza; rendimiento final pendiente de medir con catálogo real.
+
+La calculadora PVC se conserva mediante decokasa.coverage_m2 positivo por producto/variante. Las landings especiales futuras serán plantillas alternativas asignables al mismo producto, sin duplicar registros; todavía no se han construido nuevas alternativas. Se conserva solicitud → asesor → cierre Odoo. El formulario sigue simulado; no se incorporan carrito, descuentos por cantidad, puntos, entrega prometida ni stock inventado. Las imágenes y precios ilustrativos están solo en la muestra local. Guía del equipo: docs/product-detail.md. Validación real con productos Shopify pendiente de disponer de ellos.
+
 ## 09/10/2026 — Navegación y operación sencilla en Shopify
 
 Prioridad indicada por el usuario: personal nuevo debe operar desde Shopify con poca capacitación, código robusto y carga rápida. Mantener tema Liquid y herramientas nativas; evitar un catálogo paralelo, aplicaciones adicionales o consultas a Odoo al abrir una página.

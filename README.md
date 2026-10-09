@@ -11,6 +11,7 @@ Inicio → catálogo por marca o tipo → landing con ficha completa → formula
 - `templates/product.json`: cada URL `/products/<handle>` es una landing que incluye ficha y formulario.
 - `templates/page.pvc.json` + `sections/pvc-landing.liquid`: página interna PVC con selector de producto. Crear la página `pisos-pvc` y asignar plantilla cuando se trabaje en Shopify.
 - `assets/decokasa.css` / `.js`: estilos compartidos, calculadora y simulación; no bibliotecas ni servicios externos.
+- `assets/product-detail.css` / `.js`: galería, variantes y cantidad de la ficha; se cargan solo donde se utiliza. [Guía para administrar la ficha](docs/product-detail.md).
 - `assets/favicon.png`: símbolo DECOKASA transparente usado como favicon en todas las páginas del tema.
 - `docs/request-contract.json`: propuesta de contrato para Odoo/CRM y medición; aún sin implementación de transporte.
 
@@ -21,7 +22,7 @@ Asignar SKU único por variante, unidad/almacén y mapeo Odoo tras validación. 
 El formulario solo simula y no persiste datos personales. Consentimiento de seguimiento de prueba en sessionStorage; rechazar elimina atribución e identificador de visitante. Referencia de solicitud necesaria separada de analítica. UTMs deben contener nombres de campaña sin datos personales. Primer/último origen se conserva en navegación directa durante la sesión si se autoriza; no hay atribución entre sesiones todavía. GA4 y Meta/TikTok pendientes. No hay enlace al CRM activo.
 
 ## Verificación
-`npm test` aprueba trece pruebas, entre lógica, navegación real Liquid y una suite DOM simulada (filtros, variantes, formulario, consentimiento). Shopify Theme Check sin errores ni advertencias; siete HTML y ZIP verificados. Portada renderizada y revisada directamente en Shopify, en escritorio y celular, sin desbordamiento horizontal de página. Reintentos conservan referencia solo en la página actual. Pendiente: catálogo/variantes reales, validación nativa de formularios y recepción idempotente en Odoo antes del lanzamiento comercial.
+`npm test` aprueba 17 pruebas, entre lógica, navegación Liquid y pruebas DOM (filtros, variantes, formulario, consentimiento y actualización de ficha mediante Shopify). Shopify Theme Check sin errores ni advertencias; siete HTML y ZIP de 39 archivos verificados. Ficha revisada localmente en escritorio y celular sin desbordamiento. Reintentos conservan referencia solo en la página actual. Pendiente: catálogo/variantes reales, validación con productos publicados y recepción idempotente en Odoo antes del lanzamiento comercial.
 
 ## Diseño según el mockup original
 

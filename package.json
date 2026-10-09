@@ -4,7 +4,7 @@
   "private": true,
   "description": "Tema Shopify y demostraciÃ³n DECOKASA; integraciones pendientes.",
   "scripts": {
-    "test": "node --test tests/store.test.cjs tests/ui.test.cjs tests/catalog.test.cjs"
+    "test": "node --test tests/store.test.cjs tests/ui.test.cjs tests/catalog.test.cjs tests/product.test.cjs"
   },
   "devDependencies": {
     "linkedom": "0.18.13",

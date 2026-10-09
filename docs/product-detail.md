@@ -1,0 +1,27 @@
+# Administrar la ficha de producto
+
+La plantilla predeterminada utiliza los productos nativos de Shopify. Presenta galería con miniaturas, marca, título, precio, variantes, cantidad y solicitud de atención. En celular, la galería aparece encima de los datos.
+
+## Trabajo habitual del equipo
+
+1. En **Productos**, abre el producto y edita título, marca/proveedor, fotos, descripción y opciones de variante. Cada variante mantiene su precio, precio de comparación, SKU e imagen. El orden de las fotos determina las miniaturas.
+2. En **Tienda online > Temas > Editar tema**, abre **Productos > Producto predeterminado > Ficha de producto**. Puedes elegir imagen cuadrada o vertical, encajar o cubrir, mostrar marca/SKU/precio/descripción y cambiar el texto del botón y la nota del precio.
+3. Añade hasta seis bloques **Información** para contenido compartido por la plantilla, por ejemplo instrucciones o cuidados. La descripción propia de cada producto se administra en Productos; los bloques de plantilla se comparten entre los productos que la usan. Para contenido distinto por producto, conecta una fuente dinámica compatible o utiliza su descripción.
+
+Los colores nativos de Shopify se muestran como muestras cuando la opción dispone de ellas. En otros casos se usa una miniatura disponible o el nombre de la opción. Los cambios de presentación actualizan precio, SKU e imagen y conservan cantidad y datos escritos en la solicitud. Una combinación inexistente impide solicitar hasta elegir una combinación válida. Sin JavaScript, los enlaces de variantes siguen siendo navegables.
+
+## Productos con una landing especial
+
+La ficha estándar es la base. Desarrollo puede crear plantillas alternativas de producto y secciones específicas para cada familia; el equipo las asignará desde el campo **Plantilla del tema** del producto. Se conserva el mismo registro y URL de producto, con sus variantes y datos de Shopify. No es necesario duplicar productos. Las alternativas futuras y sus funciones requieren implementación y revisión propias.
+
+La calculadora PVC existente también utiliza esta ficha. Requiere `decokasa.coverage_m2`, metacampo decimal positivo del producto o de la variante, expresado en m² por caja. La variante tiene prioridad. El resultado redondea hacia arriba a cajas completas y alimenta la cantidad de la solicitud. No inventar rendimientos.
+
+## Estado operativo
+
+La acción principal continúa siendo **Solicitar compra**, atendida por un asesor. El formulario todavía simula; no envía contactos, reserva inventario ni registra ventas. La disponibilidad y el importe final se confirman con el asesor. La captura de referencia orienta la distribución; descuentos por cantidad, puntos, entrega mañana y stock verde requieren reglas comerciales y datos reales antes de incorporarse.
+
+Las ilustraciones y precios ficticios están solo en `preview/`, fuera del tema publicado. La tienda aún espera productos de Odoo. La galería actual admite fotos; otros tipos de medios requieren ampliación. Los estilos y comportamiento específicos de la ficha se cargan únicamente en las páginas que la utilizan. Rendimiento final pendiente de medir con fotos y catálogo reales.
+
+## Validación del 09/10/2026
+
+17 pruebas aprobadas: variantes nativas, combinaciones inexistentes, actualización mediante Shopify, conservación del formulario, navegación alternativa ante fallos y calculadora. Theme Check sin hallazgos. Siete vistas y ZIP de 39 archivos válidos. Navegador: escritorio de 1254 px y móvil de 390/375 px sin desbordamiento; galería, variantes, cantidad y apertura de solicitud comprobadas. La validación con productos reales en Shopify sigue pendiente.

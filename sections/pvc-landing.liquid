@@ -1,4 +1,4 @@
-{% render 'product-landing', product: section.settings.product, pvc: true %}
+{% render 'product-landing', product: section.settings.product, pvc: true, section: section, routes: routes %}
 {% schema %}
 {"name": "Landing PVC", "settings": [{"type": "product", "id": "product", "label": "Producto PVC"}], "presets": [{"name": "Landing PVC"}]}
 {% endschema %}

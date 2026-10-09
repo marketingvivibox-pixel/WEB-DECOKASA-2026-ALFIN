@@ -1,4 +1,23 @@
-{% render 'product-landing', product: product %}
+{% assign is_demo = false %}
+{% render 'product-landing', product: product, section: section, is_demo: is_demo, routes: routes %}
 {% schema %}
-{"name": "Landing con ficha", "settings": [], "presets": [{"name": "Landing con ficha"}]}
+{
+  "name": "Ficha de producto",
+  "settings": [
+    {"type": "header", "content": "Galería"},
+    {"type": "select", "id": "gallery_ratio", "label": "Formato de la imagen", "options": [{"value": "square", "label": "Cuadrado"}, {"value": "portrait", "label": "Vertical"}], "default": "square"},
+    {"type": "select", "id": "image_fit", "label": "Ajuste de las fotos", "options": [{"value": "contain", "label": "Mostrar foto completa"}, {"value": "cover", "label": "Rellenar el espacio"}], "default": "contain"},
+    {"type": "header", "content": "Información"},
+    {"type": "checkbox", "id": "show_vendor", "label": "Mostrar marca", "default": true},
+    {"type": "checkbox", "id": "show_sku", "label": "Mostrar SKU", "default": true},
+    {"type": "checkbox", "id": "show_price", "label": "Mostrar precio del producto", "default": true},
+    {"type": "checkbox", "id": "show_compare_price", "label": "Mostrar precio de comparación", "default": true},
+    {"type": "text", "id": "price_note", "label": "Nota bajo el precio", "default": "El asesor confirmará el importe final y la entrega."},
+    {"type": "text", "id": "cta_label", "label": "Texto del botón", "default": "Solicitar compra"},
+    {"type": "checkbox", "id": "show_description", "label": "Mostrar descripción del producto", "default": true}
+  ],
+  "blocks": [{"type": "information", "name": "Información desplegable", "settings": [{"type": "text", "id": "heading", "label": "Título", "default": "Información de entrega"}, {"type": "richtext", "id": "content", "label": "Contenido", "default": "<p>Consulta las condiciones de entrega con tu asesor.</p>"}]}],
+  "max_blocks": 6,
+  "presets": [{"name": "Ficha de producto"}]
+}
 {% endschema %}

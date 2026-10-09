@@ -1,5 +1,13 @@
 # Avances y validación
 
+## 09/10/2026 — Ficha predeterminada de producto
+
+- Implementada la ficha solicitada a partir de la captura: galería con miniaturas, marca, título, precio, variantes, cantidad, SKU, descripción y bloques informativos. Dos columnas en escritorio, una en móvil. Configuración desde el editor nativo y datos desde Productos.
+- Opciones nativas con actualización mediante Shopify Section Rendering, conservación de la solicitud y navegación normal como alternativa ante errores. No se serializa el catálogo completo de variantes. Calculadora PVC integrada, sin modificar el flujo comercial ni enviar formularios.
+- 17 pruebas aprobadas; Theme Check sin hallazgos; siete vistas, enlaces, IDs y JSON válidos; ZIP de 39 archivos regenerado. Navegador: 1254, 390 y 375 px sin desbordamiento, imágenes completas, galería/variantes/cantidad/apertura de solicitud comprobadas, sin errores de consola.
+- Guía creada en docs/product-detail.md. Muestra y capturas de escritorio/móvil disponibles en outputs del chat; productos ilustrativos no importados a Shopify. Recursos específicos limitados a la ficha. Pendientes: revisión con productos/fotos/precios reales, integración del receptor/Odoo, medición de rendimiento y nuevas plantillas especiales.
+- Publicación: pendiente confirmar envío de este cambio y sincronización del tema activo; registrar el resultado a continuación antes de cerrar la tarea.
+
 ## 09/10/2026 — Corrección de categorías y marcas, configuración nativa
 
 - Causa: rutas dinámicas de tipo/proveedor y listas derivadas de productos quedaban vacías en una tienda sin productos. Se crearon nueve colecciones vacías y el tema usa sus objetos y enlaces nativos.
