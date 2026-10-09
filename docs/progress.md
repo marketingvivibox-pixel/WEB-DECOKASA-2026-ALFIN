@@ -6,7 +6,8 @@
 - Marcas visibles sin productos; navegación por cinco categorías, selección activa y ordenación que conserva la colección. El estado vacío indica que los productos están en preparación.
 - Listas de marcas/categorías seleccionables y ordenables en Configuración del tema > Catálogo y navegación. Cada tarjeta de Inicio tiene selector de colección. Se preservan los ajustes existentes de Shopify; no se introduce configuración global guardada desde el repositorio.
 - Validación local: 13 pruebas aprobadas, incluidas selección del editor, colecciones no disponibles y catálogo sin productos; Theme Check sin advertencias/errores; siete vistas y ZIP de 39 archivos válidos.
-- Pendientes: verificar sincronización pública tras publicación, configuración automática según campos reales de Odoo, filtros/productos reales y rendimiento con imágenes finales. No se han activado condiciones automáticas, importado productos, instalado aplicaciones ni conectado Odoo.
+- Publicación verificada: commit `9f0ad89` enviado a GitHub/main y sincronizado en el tema activo `188927803629`. Las nueve colecciones responden HTTP 200 sin autenticación y muestran las marcas y el estado de preparación. Tecnología abre sin 404; Xion conserva la colección con orden Z–A. Editor nativo comprobado con los selectores Marcas del catálogo/Categorías de navegación. Móvil 390 px sin desbordamiento y filtros plegados al cargar. Captura del catálogo publicado guardada en outputs del chat.
+- Pendientes: configuración automática según campos reales de Odoo, filtros/productos reales y medición de rendimiento con imágenes finales. No se han activado condiciones automáticas, importado productos, instalado aplicaciones ni conectado Odoo.
 
 
 ## 09/10/2026 — Estructura visual del catálogo publicada en Shopify
