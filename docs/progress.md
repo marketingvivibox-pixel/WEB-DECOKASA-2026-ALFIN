@@ -6,7 +6,7 @@
 - Opciones nativas con actualización mediante Shopify Section Rendering, conservación de la solicitud y navegación normal como alternativa ante errores. No se serializa el catálogo completo de variantes. Calculadora PVC integrada, sin modificar el flujo comercial ni enviar formularios.
 - 17 pruebas aprobadas; Theme Check sin hallazgos; siete vistas, enlaces, IDs y JSON válidos; ZIP de 39 archivos regenerado. Navegador: 1254, 390 y 375 px sin desbordamiento, imágenes completas, galería/variantes/cantidad/apertura de solicitud comprobadas, sin errores de consola.
 - Guía creada en docs/product-detail.md. Muestra y capturas de escritorio/móvil disponibles en outputs del chat; productos ilustrativos no importados a Shopify. Recursos específicos limitados a la ficha. Pendientes: revisión con productos/fotos/precios reales, integración del receptor/Odoo, medición de rendimiento y nuevas plantillas especiales.
-- Publicación: pendiente confirmar envío de este cambio y sincronización del tema activo; registrar el resultado a continuación antes de cerrar la tarea.
+- Publicación verificada: commit `07af4a8` enviado a GitHub/main, referencia remota coincidente. Administrador Shopify confirma tema activo `188927803629`, conexión a main, estado Correcto y último guardado reciente. Recursos product-detail.css/js y decokasa.js públicos HTTP 200 con cambios presentes (Shopify minifica JavaScript). El editor muestra Producto predeterminado asignado a cero productos y deshabilitado: comprobar sus controles y la ficha con datos reales cuando exista al menos un producto. No se importaron ejemplos para eludir esta limitación.
 
 ## 09/10/2026 — Corrección de categorías y marcas, configuración nativa
 
